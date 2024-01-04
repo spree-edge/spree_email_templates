@@ -1,6 +1,68 @@
-<p><strong>Dear {{ username }} </strong>,&nbsp;</p>
-<p>Your order has been shipped with the email&nbsp; {{user_email}}&nbsp; having order number {{order_number}} of total amount {{order_total}},</p>
-<p>with the following items&nbsp;<br />&nbsp; &nbsp; &nbsp; {{line_item_details}} &nbsp;</p>
-<p>the tax amount for the order is {{tax}}</p>
-<p>the subtotal cost of line items is&nbsp; {{subtotal}} is recieved by the store&nbsp; {{store_name}}.</p>
-<p>Thanks&nbsp;</p>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="x-apple-disable-message-reformatting"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  </head>
+  <body>
+    <table width="100%" cellpadding="0" cellspacing="0" role="presentation">
+      <tr>
+        <td align="center">
+          <table width="100%" cellpadding="0" cellspacing="0" role="presentation">
+            <!-- You can override this template to design your own header. -->
+            <table align="center" width="570" cellpadding="0" cellspacing="0" role="presentation">
+              <tbody>
+                <tr>
+                  <td align="center">
+                  <img alt="Nextbrand" title="Nextbrand" src="https://nextbrand.online/assets/nb-logo-main-9ff0dbbc8fb1668a71c18481b7d7df833d85afbceb2d1d4b1cabae2112752bd1.svg">
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <!-- Email Body -->
+            <tr>
+              <td width="570" cellpadding="0" cellspacing="0">
+                <table align="center" width="570" cellpadding="0" cellspacing="0" role="presentation">
+                  <!-- Body content -->
+                  <tbody>
+                  <tr>
+                    <td>
+                      <div>
+                        <p><strong>Dear {{ username }} </strong>,&nbsp;</p>
+                        <p>Your order has been shipped with the email&nbsp; {{user_email}}&nbsp; having order number {{order_number}} of total amount {{order_total}},</p>
+                        <p>with the following items&nbsp;<br />&nbsp; &nbsp; &nbsp; {{line_item_details}} &nbsp;</p>
+                        <p>the tax amount for the order is {{tax}}</p>
+                        <p>the subtotal cost of line items is&nbsp; {{subtotal}} is recieved by the store&nbsp; {{store_name}}.</p>
+                        <p>Thanks&nbsp;</p>
+                      </div>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+            <!-- Email Footer -->
+            <tr>
+              <td>
+              <table align="center" width="570" cellpadding="0" cellspacing="0" role="presentation">
+                <tr>
+                  <td align="center">
+                    <p>
+                      <a href="#">Terms</a> | <a href="#">Privacy</a> |
+                      <a href="#">Unsubscribe</a>
+                    </p>
+                  </td>
+                </tr>
+              </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td height="60px">&nbsp;</td>
+      </tr>
+    </table>
+  </body>
+</html>
