@@ -33,8 +33,7 @@ class Template < ApplicationRecord
   end
 
   def order_vaiables
-    {
-      'username' => @resource.name,
+    { 'username' => @resource.name,
       'user_email' => @resource.email,
       'order_number' => @resource.number,
       'order_total' => @resource.total,
@@ -42,8 +41,7 @@ class Template < ApplicationRecord
       'tax' => @resource.additional_tax_total,
       'subtotal' => @resource.item_total,
       'store_name' => @resource.store.name,
-      'line_items_table' => @options[:line_items_table]
-    }
+      'line_items_table' => @options[:line_items_table] }
   end
 
   def shipment_variables
