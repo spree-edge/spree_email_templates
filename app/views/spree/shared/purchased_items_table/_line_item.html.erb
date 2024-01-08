@@ -1,0 +1,19 @@
+<tr>
+  <td class="purchase_image" style="padding: 5px;">
+    <%= link_to(image_tag(variant_image_url(line_item.variant)), spree_storefront_resource_url(line_item.product)) %>
+  </td>
+  <td class="purchase_item" style="padding: 10px 4px; color: #51545E; font-size: 15px; line-height: 18px;">
+    <strong>
+      <span style="font-family: Arial, sans-serif;">
+        <%= link_to raw(line_item.name), spree_storefront_resource_url(line_item.product) %>
+      </span>
+    </strong>
+    <p class="f-fallback" style="font-size: 12px;"><%= raw(line_item.variant.options_text) -%></p>
+  </td>
+  <td class="align-right" style="text-align: right; width: 30%;">
+    <span class="f-fallback purchase_item_price" style="font-family: Arial, sans-serif; margin-top: 10px; padding: 0.1em 0;">
+      <%= line_item.quantity %> x <%= line_item.single_money %><br>
+      <%= line_item.display_amount %>
+    </span>
+  </td>
+</tr>

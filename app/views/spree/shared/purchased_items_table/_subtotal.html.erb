@@ -1,0 +1,13 @@
+<tr>
+  <td class="purchase_footer" valign="middle" style="padding-top: 15px; border-top: 1px solid #EAEAEC;"> </td>
+  <td class="purchase_footer" valign="middle" style="padding-top: 15px; border-top: 1px solid #EAEAEC;">
+    <p class="f-fallback purchase_total purchase_total--label" style="font-family: Arial, sans-serif; margin-top: 10px; text-align: right; font-weight: bold; color: #333333; padding: 0 15px 0 0;">
+      <%= Spree.t('order_mailer.subtotal') %>
+    </p>
+  </td>
+  <td class="purchase_footer" valign="middle" style="padding-top: 15px; border-top: 1px solid #EAEAEC;">
+    <p class="f-fallback purchase_total" style="font-family: Arial, sans-serif; margin-top: 10px; text-align: right; font-weight: bold; color: #333333;">
+      <%= order.display_item_total %>
+    </p>
+  </td>
+</tr>

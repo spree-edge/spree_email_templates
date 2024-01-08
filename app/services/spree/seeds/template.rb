@@ -4,7 +4,7 @@ module Spree
       require 'nokogiri'
       prepend ::Spree::ServiceModule::Base
 
-      TEMPLATES = %i[cancel_email shipped_email confirm_email store_owner_notification_email return_authorization_email reimbursement_email]
+      TEMPLATES = %i[cancel_email shipped_email confirm_email store_owner_notification_email reimbursement_email]
 
       def call(store= nil)
         stores = ::Spree::Store.where(id: store.id) if store.present?
@@ -46,13 +46,6 @@ module Spree
             active: true,
             content_html: parse_data('cancel_email.html.erb'),
             content_json: parse_data('cancel_email.html.erb').to_json,
-            store_id:  current_store.id,
-          },
-          return_authorization_email: {
-            name: "return_authorization_email",
-            active: true,
-            content_html: parse_data('return_authorization_email.html.erb'),
-            content_json: parse_data('return_authorization_email.html.erb').to_json,
             store_id:  current_store.id,
           },
           reimbursement_email: {
