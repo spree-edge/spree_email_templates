@@ -66,7 +66,7 @@ module Spree
 
       def file_path(file_name, subdirectory = '')
         gem_path = Gem::Specification.find_by_name('spree_email_templates').gem_dir
-        File.join(gem_path, 'app', 'services', 'spree', 'email_templates', subdirectory, file_name)
+        File.join(gem_path, 'app', 'views', 'spree', 'default_email_templates', subdirectory, file_name)
       end
 
       def parse_data(file_name)

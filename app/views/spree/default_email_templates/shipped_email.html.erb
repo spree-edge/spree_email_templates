@@ -71,10 +71,6 @@
       border-collapse: collapse;
     }
 
-    p {
-      margin: 0;
-    }
-
     .ie-container table,
     .mso-container table {
       table-layout: fixed;
@@ -166,7 +162,9 @@
                             <td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;" align="left">
 
                               <div style="font-size: 14px; line-height: 140%; text-align: left; word-wrap: break-word;">
-                                <p style="line-height: 140%;"><strong>Dear </strong>{{ username }},</p>
+                                <div>
+                                  <div><strong>Dear </strong>{{ username }},</div>
+                                </div>
                               </div>
 
                             </td>
@@ -192,19 +190,17 @@
                                   <div>with the following items:</div>
                                   <div>&nbsp;</div>
                                   <div>
+                                    <div>{{line_item_details}}</div>
+                                    <div>&nbsp;</div>
                                     <div>
-                                      <div>{{line_item_details}}</div>
+                                      <div>the tax amount for the order is ${{tax}}</div>
+                                      <div>&nbsp;</div>
+                                      <div>the shipment method is {{shipping_method_name}} and the tracking id is</div>
+                                      <div>{{track_information}}</div>
                                       <div>&nbsp;</div>
                                       <div>
-                                        <div>
-                                          <div>the tax amount for the order is ${{tax}}</div>
-                                          <div>&nbsp;</div>
-                                          <div>
-                                            <div>
-                                              <div>the subtotal cost of line items is ${{subtotal}} is recieved by the store {{store_name}}.</div>
-                                            </div>
-                                          </div>
-                                        </div>
+                                        <div>the subtotal cost of line items is ${{subtotal}} is recieved by the store {{store_name}}.</div>
+                                        <div>&nbsp;</div>
                                       </div>
                                     </div>
                                   </div>

@@ -19,7 +19,7 @@ module Spree
       return unless template&.active?
       @order = order.respond_to?(:id) ? order : ::Spree::Order.find(order)
       order_details
-      mail(to: @order.email, from: from_address, subject: "#{current_store.name} received a new order", body: @body, content_type: 'text/html')
+      mail(to: current_store.new_order_notifications_email, from: from_address, subject: "#{current_store.name} received a new order", body: @body, content_type: 'text/html')
     end
 
     private

@@ -56,7 +56,6 @@ class Template < ApplicationRecord
       'line_item_details' => @options[:line_item_details],
       'tax' => @resource.order.additional_tax_total,
       'subtotal' => @resource.order.item_total,
-      'store_name' => @resource.store.name,
       'line_items_table' => @options[:line_items_table] }
   end
 
