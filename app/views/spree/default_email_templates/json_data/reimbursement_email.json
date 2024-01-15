@@ -5,7 +5,7 @@
       "u_content_html": 1,
       "u_content_menu": 1,
       "u_content_text": 2,
-      "u_content_image": 1,
+      "u_content_image": 3,
       "u_content_heading": 1
   },
   "body": {
@@ -111,7 +111,7 @@
                       "duplicatable": true,
                       "deletable": true,
                       "hideable": true,
-                      "text": "<p style=\"line-height: 140%;\"><strong>Dear </strong>{{ username }},</p>"
+                      "text": "<div>\n<div><strong>Dear </strong>{{ username }},</div>\n</div>"
                   }
               }, {
                   "id": "2My9Ja0Pzd",
@@ -140,7 +140,7 @@
                       "duplicatable": true,
                       "deletable": true,
                       "hideable": true,
-                      "text": "<div>\n<div>\n<div>Your return authorization has been approved for {{user_email}} having order number {{order_number}}</div>\n<div> </div>\n</div>\n</div>\n<div>\n<div>with the following items:</div>\n<div> </div>\n<div>{{reimbursement_item_details}}</div>\n</div>\n<div>\n<div><br />\n<div>\n<div>Thanks</div>\n</div>\n</div>\n</div>",
+                      "text": "<div>\n<div>\n<div>Your return authorization has been approved for {{user_email}} having order number {{order_number}}</div>\n</div>\n</div>\n<div>\n<div> </div>\n<div>{{reimbursement_item_details}}</div>\n</div>\n<div>\n<div><br />\n<div>\n<div>Thanks</div>\n</div>\n</div>\n</div>",
                       "_override": {
                           "desktop": {
                               "hideDesktop": false

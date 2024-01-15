@@ -50,7 +50,6 @@ class Template < ApplicationRecord
       'order_number' => @resource.order.number,
       'shipping_method_name' => @resource.shipping_method.name,
       'store_name' => @resource.store.name,
-      'tracking_url' => @resource.tracking_url,
       'track_information' => @resource.tracking,
       'order_total' => @resource.order.total,
       'line_item_details' => @options[:line_item_details],
@@ -64,7 +63,6 @@ class Template < ApplicationRecord
       'user_email' => @resource.order.email,
       'order_number' => @resource.order.number,
       'store_name' => @resource.order.store.name,
-      'reimbursement_item_details' => @options[:reimbursement_item_details],
-      'reimbursement_total' => @resource.total }
+      'reimbursement_item_details' => @options[:reimbursement_item_details] }
   end
 end

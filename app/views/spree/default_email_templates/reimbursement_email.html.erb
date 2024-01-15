@@ -71,10 +71,6 @@
       border-collapse: collapse;
     }
 
-    p {
-      margin: 0;
-    }
-
     .ie-container table,
     .mso-container table {
       table-layout: fixed;
@@ -166,7 +162,9 @@
                             <td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;" align="left">
 
                               <div style="font-size: 14px; line-height: 140%; text-align: left; word-wrap: break-word;">
-                                <p style="line-height: 140%;"><strong>Dear </strong>{{ username }},</p>
+                                <div>
+                                  <div><strong>Dear </strong>{{ username }},</div>
+                                </div>
                               </div>
 
                             </td>
@@ -183,11 +181,9 @@
                                 <div>
                                   <div>
                                     <div>Your return authorization has been approved for {{user_email}} having order number {{order_number}}</div>
-                                    <div>&nbsp;</div>
                                   </div>
                                 </div>
                                 <div>
-                                  <div>with the following items:</div>
                                   <div>&nbsp;</div>
                                   <div>{{reimbursement_item_details}}</div>
                                 </div>
