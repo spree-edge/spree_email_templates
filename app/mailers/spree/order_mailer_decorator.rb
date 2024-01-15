@@ -2,18 +2,21 @@
 module Spree
   module OrderMailerDecorator
     def cancel_email(order, resend = false)
+      return unless template&.active?
       @order = order.respond_to?(:id) ? order : ::Spree::Order.find(order)
       order_details
       mail(to: @order.email, from: from_address, subject: 'Cancellation of Order', body: @body, content_type: 'text/html')
     end
 
     def confirm_email(order, resend = false)
+      return unless template&.active?
       @order = order.respond_to?(:id) ? order : ::Spree::Order.find(order)
       order_details
       mail(to: @order.email, from: from_address, subject: 'Order Confirmation', body: @body, content_type: 'text/html')
     end
 
     def store_owner_notification_email(order, resend = false)
+      return unless template&.active?
       @order = order.respond_to?(:id) ? order : ::Spree::Order.find(order)
       order_details
       mail(to: @order.email, from: from_address, subject: "#{current_store.name} received a new order", body: @body, content_type: 'text/html')

@@ -1,6 +1,7 @@
 module Spree
   module ShipmentMailerDecorator
     def shipped_email(shipment, resend = false)
+      return unless template&.active?
       @shipment = shipment.respond_to?(:id) ? shipment : Spree::Shipment.find(shipment)
       @order = @shipment.order
       email = @order.email

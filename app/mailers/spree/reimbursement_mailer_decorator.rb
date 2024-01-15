@@ -1,6 +1,7 @@
 module Spree
   module ReimbursementMailerDecorator
     def reimbursement_email(reimbursement, resend = false)
+      return unless template&.active?
       @reimbursement = reimbursement.respond_to?(:id) ? reimbursement : Spree::Reimbursement.find(reimbursement)
       @order = @reimbursement.order
       email = @order.email

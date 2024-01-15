@@ -1,0 +1,48 @@
+<h2>Email Templates</h2>
+
+<div class="table-responsive mt-3">
+  <table class="table table-bordered">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col"><h5>Name</h5></th>
+        <th scope="col"><h5>Active</h5></th>
+        <th scope="col"><h5>Action</h5></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @templates.each do |template| %>
+        <tr>
+          <td><%= template.internal_name %></td>
+          <td>
+            <div class="custom-control custom-switch">
+              <input type="checkbox" class="custom-control-input" id="activeSwitch<%= template.id %>" <%= template.active ? 'checked' : '' %> onclick="updateActiveStatus(<%= template.id %>)">
+              <label class="custom-control-label" for="activeSwitch<%= template.id %>"></label>
+            </div>
+          </td>
+          <td>
+            <a href="<%= edit_admin_template_path(template) %>" class="btn btn-success" data-turbo="false">Edit</a>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<script>
+  function updateActiveStatus(template_id) {
+    var id = template_id
+    var active = document.getElementById("activeSwitch" + id).checked;
+
+    $.ajax({
+      url: "/admin/templates/" + id,
+      method: 'PATCH',
+      data: { active: active},
+      success: function(response) {
+        console.log('Content saved successfully:', response);
+      },
+      error: function(error) {
+        console.error('Error saving content:', error);
+      }
+    })
+  }
+</script>
