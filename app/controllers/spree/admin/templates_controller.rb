@@ -8,7 +8,6 @@ module Spree
 
         unless @templates
           flash[:alert] = Spree.t(:not_found, scope: :template)
-          redirect_to admin_templates_path
         end
       end
 
@@ -22,7 +21,6 @@ module Spree
           @template.update(permitted_params)
         end
 
-        redirect_to admin_templates_path
         flash[:success] = Spree.t(:updated, scope: :template)
       end
 
@@ -32,8 +30,8 @@ module Spree
         @template = Template.find_by(id: params[:id])
 
         unless @template
-          flash[:alert] = Spree.t(:not_found, scope: :template)
           redirect_to admin_templates_path
+          flash[:alert] = Spree.t(:not_found, scope: :template)
         end
       end
 

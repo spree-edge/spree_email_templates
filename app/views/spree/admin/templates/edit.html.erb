@@ -1,5 +1,5 @@
 <div class="float-right mb-3">
-  <button type="button" class="btn btn-success" onclick="saveContent()">Save Content</button>
+  <button type="button" class="btn btn-success" onclick="saveContent()"><%= Spree.t(:save_content_button, scope: :template) %></button>
 </div>
 
 <script src="https://editor.unlayer.com/embed.js"></script>
@@ -27,6 +27,7 @@
         data: { content_json: json, content_html: html},
         success: function(response) {
           console.log('Content saved successfully:', response);
+          location.reload(true);
         },
         error: function(error) {
           console.error('Error saving content:', error);

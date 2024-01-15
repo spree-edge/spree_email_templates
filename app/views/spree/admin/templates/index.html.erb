@@ -1,12 +1,12 @@
-<h2>Email Templates</h2>
+<h2> <%= Spree.t(:email_templates, scope: :template) %> </h2>
 
 <div class="table-responsive mt-3">
   <table class="table table-bordered">
     <thead class="thead-dark">
       <tr>
-        <th scope="col"><h5>Name</h5></th>
-        <th scope="col"><h5>Active</h5></th>
-        <th scope="col"><h5>Action</h5></th>
+        <th scope="col"><h5><%= Spree.t(:email_template_name, scope: :template) %></h5></th>
+        <th scope="col"><h5><%= Spree.t(:email_template_active, scope: :template) %></h5></th>
+        <th scope="col"><h5><%= Spree.t(:emai_template_action, scope: :template) %></h5></th>
       </tr>
     </thead>
     <tbody>
@@ -20,7 +20,7 @@
             </div>
           </td>
           <td>
-            <a href="<%= edit_admin_template_path(template) %>" class="btn btn-success" data-turbo="false">Edit</a>
+            <a href="<%= edit_admin_template_path(template) %>" class="btn btn-success" data-turbo="false"> <%= Spree.t(:edit_button, scope: :template) %> </a>
           </td>
         </tr>
       <% end %>
@@ -39,6 +39,7 @@
       data: { active: active},
       success: function(response) {
         console.log('Content saved successfully:', response);
+        location.reload(true);
       },
       error: function(error) {
         console.error('Error saving content:', error);

@@ -16,3 +16,9 @@ en:
       cancelation_email_name: cancel_email
       reimbursment_email: Order Reimbursement Email
       reimbursment_email_name: reimbursement_email
+      email_templates: Email Templates
+      edit_button: Edit
+      email_template_name: Name
+      email_template_active: Active
+      emai_template_action: Action
+      save_content_button: Save Content
