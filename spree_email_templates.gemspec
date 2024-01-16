@@ -19,9 +19,7 @@ Gem::Specification.new do |s|
 
   # Co-author
   s.metadata = {
-    "co-authors" => [
-      "Rahul Singh <rahul@bluebash.co>"
-    ]
+    "co-authors" => "Rahul Singh <rahul@bluebash.co>"
   }
 
   s.files        = `git ls-files`.split("\n").reject { |f| f.match(/^spec/) && !f.match(/^spec\/fixtures/) }
