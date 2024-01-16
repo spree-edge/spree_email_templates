@@ -10,7 +10,7 @@ It also uses [liquid](https://github.com/Shopify/liquid) gem to parse the email 
 - **Supports Customization:** Administrators have the flexibility to update and customize Spree email templates directly from the admin panel, ensuring a tailored and personalized communication approach.
 - **Template Activation:** Effortlessly enable or disable specific email templates with a simple activation toggle, giving you control over the types of communications your platform sends out.
 - **Template Parsing:** Utilize the power of the liquid gem to parse templates, seamlessly replacing tags with dynamic content. This ensures that your emails are not only customizable but also dynamically generated to suit specific scenarios.
-- **Unlayer Editor extended features:** Take advantage of the extended features provided by the Unlayer editor for even better customization of managing email templates. This integration enhances the overall email template management experience, allowing for more sophisticated design and content options.
+- **Unlayer Editor extended features:** Take advantage of the extended features provided by the [Unlayer editor](https://unlayer.com/) for even better customization of managing email templates. This integration enhances the overall email template management experience, allowing for more sophisticated design and content options.
 
 ## Installation
 
