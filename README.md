@@ -1,6 +1,8 @@
 # Spree Email Templates
 
-Effortlessly customize and manage spree core emails with the this extension. This extension empowers store administrators to design email templates according to their requirements and control the sending of emails with a simple toggle. It also uses [liquid](https://github.com/Shopify/liquid) gem to parse the email templates and replaces tags with dynamic values.
+Effortlessly customize and manage spree core emails with the this extension. This extension empowers store administrators to design email templates according to their requirements and control the sending of emails with a simple toggle.
+
+It also uses [liquid](https://github.com/Shopify/liquid) gem to parse the email templates and replaces tags with dynamic values.
 
 ## Features
 
