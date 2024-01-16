@@ -1,12 +1,14 @@
 # Spree Email Templates
 
-Effortlessly customize and manage Spree emails with the Spree Email Templates extension. This extension empowers store administrators to design email templates according to their requirements and control the sending of emails with a simple toggle.
+Effortlessly customize and manage spree core emails with the this extension. This extension empowers store administrators to design email templates according to their requirements and control the sending of emails with a simple toggle. It also uses [liquid](https://github.com/Shopify/liquid) gem to parse the email templates and replaces tags with dynamic values.
 
 ## Features
 
-- **Default Email Templates:** The extension comes with pre-configured default email templates, offering a ready-to-use solution out of the box.
-- **Email Template Customization:** Allow administrators to update and customize Spree email templates directly from the admin panel.
-- **Activation Toggle:** Provide the ability to enable or disable specific email templates with a simple activation toggle.
+- **Manage Core Templates:** The extension comes equipped with pre-configured default core email templates, providing a seamless ready-to-use solution straight out of the box.
+- **Supports Customization:** Administrators have the flexibility to update and customize Spree email templates directly from the admin panel, ensuring a tailored and personalized communication approach.
+- **Template Activation:** Effortlessly enable or disable specific email templates with a simple activation toggle, giving you control over the types of communications your platform sends out.
+- **Template Parsing:** Utilize the power of the liquid gem to parse templates, seamlessly replacing tags with dynamic content. This ensures that your emails are not only customizable but also dynamically generated to suit specific scenarios.
+- **Unlayer Editor extended features:** Take advantage of the extended features provided by the Unlayer editor for even better customization of managing email templates. This integration enhances the overall email template management experience, allowing for more sophisticated design and content options.
 
 ## Installation
 
@@ -36,11 +38,11 @@ Effortlessly customize and manage Spree emails with the Spree Email Templates ex
 
 To manage email templates, navigate to the "Email Templates" tab in the main menu of the admin panel. Here, you'll find a list of all available email templates.
 
-### Activating/Deactivating Templates
+### Activate/Disactivate
 
 All templates are activated by default. If you wish to temporarily stop any of them, deactivate the toggler.
 
-### Editing Templates
+### Customization
 
 Click the "Edit" option next to the desired template. This opens the template editor powered by Unlayer, allowing you to customize the template according to your requirements. Make your changes, save, and the modified template will be applied to future email communications.
 
