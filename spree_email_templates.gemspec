@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.author    = 'Pardeep'
   s.email     = 'pardeep.kumar@bluebash.co'
   s.homepage  = 'https://github.com/Nextband-online/spree_email_templates'
-  s.license = 'BSD-3-Clause'
+  s.license   = 'BSD-3-Clause'
 
   # Co-author
   s.metadata = {
@@ -24,7 +24,7 @@ Gem::Specification.new do |s|
     ]
   }
 
-  s.files       = `git ls-files`.split("\n").reject { |f| f.match(/^spec/) && !f.match(/^spec\/fixtures/) }
+  s.files        = `git ls-files`.split("\n").reject { |f| f.match(/^spec/) && !f.match(/^spec\/fixtures/) }
   s.require_path = 'lib'
   s.requirements << 'none'
 
