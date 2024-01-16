@@ -2,4 +2,23 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  spree:
+    template:
+      not_found: Templates not found
+      updated: Template Updated Successfully
+      owner_email: Store Owner Notification Email
+      owner_email_name: store_owner_notification_email
+      order_confirm_email: Order Confirmation Email
+      order_confirm_email_name: confirm_email
+      shipment_email: Shipment Email
+      shipment_email_name: shipped_email
+      cancelation_email: Order Cancelation Email
+      cancelation_email_name: cancel_email
+      reimbursment_email: Order Reimbursement Email
+      reimbursment_email_name: reimbursement_email
+      email_templates: Email Templates
+      edit_button: Edit
+      email_template_name: Name
+      email_template_active: Active
+      emai_template_action: Action
+      save_content_button: Save Content

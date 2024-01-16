@@ -1,0 +1,64 @@
+<table class="purchase_content " style="width: 100%; margin-top: 10px; -premailer-width: 100%; -premailer-cellpadding: 0; -premailer-cellspacing: 0;">
+  <%= render collection: line_items, partial: 'spree/shared/purchased_items_table/line_item', as: :line_item %>
+  <%= render 'spree/shared/purchased_items_table/subtotal', order: order %>
+  <% if order.line_item_adjustments.exists? %>
+    <% if order.all_adjustments.promotion.eligible.exists? %>
+      <% order.all_adjustments.promotion.eligible.group_by(&:label).each do |label, adjustments| %>
+        <tr>
+          <td></td>
+          <td>
+            <p class="f-fallback purchase_total purchase_total--label" style="margin: 0; text-align: right; font-weight: bold; color: #333333; padding: 0 15px 0 0;">
+              <%= Spree.t(:promotion) %>:
+            </p>
+            <p class="f-fallback purchase_total--name purchase_total--label" style="margin: 0; text-align: right; color: #333333; padding: 0 15px 0 0;">
+              <%= label %>
+            </p>
+          </td>
+          <td class="purchase_total-col" style="vertical-align: bottom;">
+            <p class="f-fallback purchase_total" style="margin: 0; text-align: right; font-weight: bold; color: #333333;">
+              <%= Spree::Money.new(adjustments.sum(&:amount), currency: order.currency) %>
+            </p>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+  <% end %>
+  <% order.shipments.group_by { |s| s.selected_shipping_rate&.name }.each do |name, shipments| %>
+    <tr>
+      <td></td>
+      <td>
+      <p class="f-fallback purchase_total purchase_total--label" style="margin: 0; text-align: right; font-weight: bold; color: #333333; padding: 0 15px 0 0;">
+          <%= Spree.t(:shipping) %>:
+        </p>
+        <p class="f-fallback purchase_total--name purchase_total--label" style="margin: 0; text-align: right; color: #333333; padding: 0 15px 0 0;">
+          <%= name %>
+        </p>
+      </td>
+      <td class="purchase_total-col" style="vertical-align: bottom;">
+        <p class="f-fallback purchase_total" style="margin: 0; text-align: right; font-weight: bold; color: #333333;">
+          <%= Spree::Money.new(shipments.sum(&:discounted_cost), currency: order.currency) %>
+        </p>
+      </td>
+    </tr>
+  <% end %>
+  <% if order.additional_tax_total != 0 %>
+    <tr>
+      <td></td>
+      <td>
+      <p class="f-fallback purchase_total purchase_total--label" style="margin: 0; text-align: right; font-weight: bold; color: #333333; padding: 0 15px 0 0;">
+          <%= Spree.t(:tax) %>:
+        </p>
+      </td>
+      <td class="purchase_total-col" style="vertical-align: bottom;">
+        <p class="f-fallback purchase_total" style="margin: 0; text-align: right; font-weight: bold; color: #333333;">
+          <%= order.display_additional_tax_total.to_html %>
+        </p>
+      </td>
+    </tr>
+  <% end %>
+  <% order.adjustments.eligible.each do |adjustment| %>
+    <% next if (adjustment.source_type == 'Spree::TaxRate') || (adjustment.amount == 0) %>
+    <%= render 'spree/shared/purchased_items_table/adjustment', adjustment: adjustment, order: order %>
+  <% end %>
+  <%= render 'spree/shared/purchased_items_table/total', order: order %>
+</table>
