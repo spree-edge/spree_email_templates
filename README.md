@@ -1,6 +1,12 @@
-# SpreeEmailTemplates
+# Spree Email Templates
 
-Introduction goes here.
+Effortlessly customize and manage Spree emails with the Spree Email Templates extension. This extension empowers store administrators to design email templates according to their requirements and control the sending of emails with a simple toggle.
+
+## Features
+
+- **Default Email Templates:** The extension comes with pre-configured default email templates, offering a ready-to-use solution out of the box.
+- **Email Template Customization:** Allow administrators to update and customize Spree email templates directly from the admin panel.
+- **Activation Toggle:** Provide the ability to enable or disable specific email templates with a simple activation toggle.
 
 ## Installation
 
@@ -25,6 +31,20 @@ Introduction goes here.
 4. Restart your server
 
   If your server was running, restart it so that it can find the assets properly.
+
+## Usage
+
+To manage email templates, navigate to the "Email Templates" tab in the main menu of the admin panel. Here, you'll find a list of all available email templates.
+
+### Activating/Deactivating Templates
+
+All templates are activated by default. If you wish to temporarily stop any of them, deactivate the toggler.
+
+### Editing Templates
+
+Click the "Edit" option next to the desired template. This opens the template editor powered by Unlayer, allowing you to customize the template according to your requirements. Make your changes, save, and the modified template will be applied to future email communications.
+
+Now, your customized email templates will be utilized when sending emails from your Spree store.
 
 ## Testing
 
