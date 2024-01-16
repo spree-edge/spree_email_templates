@@ -40,7 +40,7 @@ It also uses [liquid](https://github.com/Shopify/liquid) gem to parse the email 
 
 To manage email templates, navigate to the "Email Templates" tab in the main menu of the admin panel. Here, you'll find a list of all available email templates.
 
-### Activate/Disactivate
+### Activate/Diactivate
 
 All templates are activated by default. If you wish to temporarily stop any of them, deactivate the toggler.
 
