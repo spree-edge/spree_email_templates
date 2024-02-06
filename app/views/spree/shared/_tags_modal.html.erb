@@ -31,11 +31,15 @@
       <% end %>
 
       <% tag_hash.each do |key, value| %>
-        <h4 class='mt-2 ml-1'><b><%= key %></b></h4>
-        <div style= 'display: flex; flex-wrap: wrap;'>
-          <% value.each do |tag| %>
-            <h5><span class="badge badge-secondary px-2 py-2 mx-2 my-2">
-              <span style="text-transform: none;"><%= tag %></span></span></h5>
+        <h4 class='ml-1 mt-1 mb-0'><b><%= key %></b></h4>
+        <div style='display: flex; flex-wrap: wrap;'>
+          <% value.each_with_index do |tag, index| %>
+            <span class="ml-1 mb-0">
+              <span style="text-transform: none;">
+                {{<%= tag %>}}
+                <% if index < value.length - 1 %>,<% end %>
+              </span>
+            </span>
           <% end %>
         </div>
       <% end %>
