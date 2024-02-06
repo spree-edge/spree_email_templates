@@ -3,53 +3,21 @@
       "u_row": 1,
       "u_column": 1,
       "u_content_html": 1,
-      "u_content_menu": 1,
-      "u_content_text": 2,
-      "u_content_image": 3,
-      "u_content_heading": 1
+      "u_content_text": 1,
+      "u_content_image": 1
   },
   "body": {
-      "id": "hRp88Z8NjI",
+      "id": "I8iO-QcqGI",
       "rows": [{
-          "id": "RuNysjyv9O",
+          "id": "_xm8FjOWRZ",
           "cells": [1],
           "columns": [{
-              "id": "no0ZHUXH3x",
+              "id": "LUsz38mWQg",
               "contents": [{
-                  "id": "lMoK_qFZyj",
-                  "type": "heading",
-                  "values": {
-                      "containerPadding": "10px",
-                      "anchor": "",
-                      "headingType": "h1",
-                      "fontSize": "22px",
-                      "textAlign": "left",
-                      "lineHeight": "140%",
-                      "linkStyle": {
-                          "inherit": true,
-                          "linkColor": "#0000ee",
-                          "linkHoverColor": "#0000ee",
-                          "linkUnderline": true,
-                          "linkHoverUnderline": true
-                      },
-                      "hideDesktop": false,
-                      "displayCondition": null,
-                      "_meta": {
-                          "htmlID": "u_content_heading_1",
-                          "htmlClassNames": "u_content_heading"
-                      },
-                      "selectable": true,
-                      "draggable": true,
-                      "duplicatable": true,
-                      "deletable": true,
-                      "hideable": true,
-                      "text": "<span><span></span></span>"
-                  }
-              }, {
-                  "id": "QOuETtcyXz",
+                  "id": "aD3gbr5N05",
                   "type": "image",
                   "values": {
-                      "containerPadding": "10px",
+                      "containerPadding": "19px",
                       "anchor": "",
                       "src": {
                           "url": "https://nextbrand.online/assets/nb-logo-main-9ff0dbbc8fb1668a71c18481b7d7df833d85afbceb2d1d4b1cabae2112752bd1.svg",
@@ -77,15 +45,10 @@
                       "draggable": true,
                       "duplicatable": true,
                       "deletable": true,
-                      "hideable": true,
-                      "_override": {
-                          "desktop": {
-                              "hideDesktop": false
-                          }
-                      }
+                      "hideable": true
                   }
               }, {
-                  "id": "DcjOyHNtBV",
+                  "id": "wSSVMbkELN",
                   "type": "text",
                   "values": {
                       "containerPadding": "10px",
@@ -111,44 +74,10 @@
                       "duplicatable": true,
                       "deletable": true,
                       "hideable": true,
-                      "text": "<div>\n<div><strong>Dear </strong>{{ username }},</div>\n</div>"
+                      "text": "<p style=\"line-height: 140%;\"><strong>Dear </strong>{{ user.first_name }} {{ user.last_name }},</p>\n<p style=\"line-height: 140%;\"> </p>\n<div>\n<div>\n<div>Your return authorization has been approved for {{user.email}} having order number {{order.number}}</div>\n<div> </div>\n<div><strong>Refund Summary:</strong></div>\n</div>\n</div>\n<div>\n<div> </div>\n<div>Total refunded: ${{ reimbursement.total }}</div>\n<div> </div>\n<div><strong>Exchange Summary:</strong></div>\n<div> </div>\n<div>{% for exchangeitem in exchange_items %}</div>\n<div>       <strong>{{ exchangeitem.variant_name }}</strong></div>\n<div>      <sup> ({{ exchangeitem.variant_option_text }})</sup></div>\n<div>{% endfor %}</div>\n<div> </div>\n<div> </div>\n<div>Thank you for your business.<br />Nextbrand Team</div>\n</div>\n<div>\n<div> </div>\n<div> </div>\n</div>"
                   }
               }, {
-                  "id": "2My9Ja0Pzd",
-                  "type": "text",
-                  "values": {
-                      "containerPadding": "10px",
-                      "anchor": "",
-                      "fontSize": "14px",
-                      "textAlign": "left",
-                      "lineHeight": "140%",
-                      "linkStyle": {
-                          "inherit": true,
-                          "linkColor": "#0000ee",
-                          "linkHoverColor": "#0000ee",
-                          "linkUnderline": true,
-                          "linkHoverUnderline": true
-                      },
-                      "hideDesktop": false,
-                      "displayCondition": null,
-                      "_meta": {
-                          "htmlID": "u_content_text_2",
-                          "htmlClassNames": "u_content_text"
-                      },
-                      "selectable": true,
-                      "draggable": true,
-                      "duplicatable": true,
-                      "deletable": true,
-                      "hideable": true,
-                      "text": "<div>\n<div>\n<div>Your return authorization has been approved for {{user_email}} having order number {{order_number}}</div>\n</div>\n</div>\n<div>\n<div> </div>\n<div>{{reimbursement_item_details}}</div>\n</div>\n<div>\n<div><br />\n<div>\n<div>Thanks</div>\n</div>\n</div>\n</div>",
-                      "_override": {
-                          "desktop": {
-                              "hideDesktop": false
-                          }
-                      }
-                  }
-              }, {
-                  "id": "Nnvizoywqb",
+                  "id": "XJerJ6e770",
                   "type": "html",
                   "values": {
                       "html": "<div style=\"text-align: center;\">\n  <a href=\"#\" style=\"text-decoration: none;\">Terms</a> | \n  <a href=\"#\" style=\"text-decoration: none;\">Privacy</a> | \n  <a href=\"#\" style=\"text-decoration: none;\">Unsubscribe</a>\n</div>\n",

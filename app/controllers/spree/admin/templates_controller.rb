@@ -1,7 +1,7 @@
 module Spree
   module Admin
     class TemplatesController < Spree::Admin::BaseController
-      before_action :find_template, only: [:edit, :update]
+      before_action :find_template, only: [:edit, :update, :test_email]
 
       def index
         @templates = current_store.templates
@@ -9,6 +9,10 @@ module Spree
         unless @templates
           flash[:alert] = Spree.t(:not_found, scope: :template)
         end
+      end
+
+      def edit
+        @tags = @template.tags
       end
 
       def update
@@ -24,6 +28,18 @@ module Spree
         flash[:success] = Spree.t(:updated, scope: :template)
       end
 
+      def test_email
+        email = permitted_params[:email]
+        if email && @template.active
+          @template.send_mail(email, mailer_class)
+          redirect_to admin_templates_path
+          flash[:success] = Spree.t(:test_mail_sent, scope: :template)
+        else
+          redirect_to admin_templates_path
+          flash[:alert] = Spree.t(:active_template, scope: :template)
+        end
+      end
+
       private
 
       def find_template
@@ -35,8 +51,19 @@ module Spree
         end
       end
 
+      def mailer_class
+        case @template.name
+        when 'confirm_email', 'cancel_email', 'store_owner_notification_email'
+          'Spree::OrderMailer'
+        when 'shipped_email'
+          'Spree::ShipmentMailer'
+        when 'reimbursement_email'
+          'Spree::ReimbursementMailer'
+        end
+      end
+
       def permitted_params
-        params.permit(:content_html, :active, :id).merge(content_json: @content_json)
+        params.permit(:content_html, :active, :id, :email).merge(content_json: @content_json)
       end
     end
   end

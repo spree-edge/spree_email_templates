@@ -2,11 +2,11 @@
   "counters": {
       "u_row": 1,
       "u_column": 1,
-      "u_content_heading": 1,
-      "u_content_image": 1,
-      "u_content_text": 2,
+      "u_content_html": 3,
       "u_content_menu": 1,
-      "u_content_html": 1
+      "u_content_text": 4,
+      "u_content_image": 3,
+      "u_content_heading": 1
   },
   "body": {
       "id": "hRp88Z8NjI",
@@ -32,6 +32,7 @@
                           "linkUnderline": true,
                           "linkHoverUnderline": true
                       },
+                      "hideDesktop": false,
                       "displayCondition": null,
                       "_meta": {
                           "htmlID": "u_content_heading_1",
@@ -52,10 +53,10 @@
                       "anchor": "",
                       "src": {
                           "url": "https://nextbrand.online/assets/nb-logo-main-9ff0dbbc8fb1668a71c18481b7d7df833d85afbceb2d1d4b1cabae2112752bd1.svg",
-                          "autoWidth": false,
-                          "maxWidth": "100%",
                           "width": 310,
-                          "height": 38
+                          "height": 38,
+                          "maxWidth": "100%",
+                          "autoWidth": false
                       },
                       "textAlign": "center",
                       "altText": "",
@@ -66,6 +67,7 @@
                               "target": "_blank"
                           }
                       },
+                      "hideDesktop": false,
                       "displayCondition": null,
                       "_meta": {
                           "htmlID": "u_content_image_1",
@@ -75,7 +77,12 @@
                       "draggable": true,
                       "duplicatable": true,
                       "deletable": true,
-                      "hideable": true
+                      "hideable": true,
+                      "_override": {
+                          "desktop": {
+                              "hideDesktop": false
+                          }
+                      }
                   }
               }, {
                   "id": "DcjOyHNtBV",
@@ -93,6 +100,7 @@
                           "linkUnderline": true,
                           "linkHoverUnderline": true
                       },
+                      "hideDesktop": false,
                       "displayCondition": null,
                       "_meta": {
                           "htmlID": "u_content_text_1",
@@ -103,7 +111,7 @@
                       "duplicatable": true,
                       "deletable": true,
                       "hideable": true,
-                      "text": "<p style=\"line-height: 140%;\"><strong>Hi </strong>{{ username }},</p>"
+                      "text": "<p style=\"line-height: 140%;\"><strong>Dear </strong>{{ user.first_name }} {{ user.last_name }},</p>"
                   }
               }, {
                   "id": "2My9Ja0Pzd",
@@ -121,6 +129,7 @@
                           "linkUnderline": true,
                           "linkHoverUnderline": true
                       },
+                      "hideDesktop": false,
                       "displayCondition": null,
                       "_meta": {
                           "htmlID": "u_content_text_2",
@@ -131,13 +140,67 @@
                       "duplicatable": true,
                       "deletable": true,
                       "hideable": true,
-                      "text": "<p style=\"line-height: 140%;\">Your order has been placed with the email {{ user_email }} having order number {{ order_number }} of a total amount ${{ order_total }},<br /><br /></p>\n<p style=\"line-height: 140%;\">with the following items<br /><br /></p>\n<div>\n<div>{{ line_item_details }}<br /><br />\n<div>\n<div>The tax amount for the order is ${{ tax }}<br />\n<div>\n<div>The subtotal cost of line items is  ${{ subtotal }} is received by the store  {{ store_name }}.</div>\n</div>\n<br />\n<div>\n<div>Thanks</div>\n</div>\n</div>\n</div>\n</div>\n</div>"
+                      "text": "<p style=\"line-height: 140%;\">Your order has been placed with the email {{ order.email }} having order number {{ order.number }} <br /><br /><strong>Order Summary:</strong></p>",
+                      "_override": {
+                          "desktop": {
+                              "hideDesktop": false
+                          }
+                      }
+                  }
+              }, {
+                  "id": "Y8168CI0N3",
+                  "type": "html",
+                  "values": {
+                      "html": "<hr>\n<div class=\"container\">\n<div class=\"row\" >\n{% for lineitem in line_items %}\n  <div class=\"col-sm\" style=\"display: flex; justify-content: space-between; margin-top: 15px;\">\n  <div><b>{{ lineitem.name }}</b></div>\n  <div>{{ lineitem.quantity }} × {{ lineitem.single_money }}</div>\n</div>\n  <br>\n<div class=\"col-sm\" style=\"display: flex; justify-content: space-between; margin-top: -16px;\">\n  <div style=\"font-size: 12px;\">({{ lineitem.options_text }})</div>\n  <div>{{ lineitem.display_amount }}</div>\n</div>\n  {% endfor %}\n</div>\n</div>\n<hr>\n\n<div class=\"container\">\n<div class=\"row\" >\n  <div class=\"col-sm\" style=\"display: flex; justify-content: flex-end; margin-top: 15px;\">\n<div style='margin-right: 50px;'> <b>Subtotal:</b> </div>\n  <div><b>${{ order.item_total }}</b></div>\n</div>\n</div>\n</div>\n\n<div class=\"container\">\n<div class=\"row\" >\n  <div class=\"col-sm\" style=\"display: flex; justify-content: flex-end; margin-top: 15px;\">\n    <div style='margin-right: 90px;'> <b>Shipping:</b></div> </div>\n    <div class=\"col-sm\" style=\"display: flex; justify-content: flex-end; margin-top: 15px;\">\n\t<div style='margin-right: 50px; margin-top: -10px;'>\n      {% for shipment in shipments %}\n    {{ shipment.shipping_method_name }}\n\t</div>\n\t\t<div style='margin-top: -10px;'><b>\n      ${{ shipment.cost }} </b>\n\t\t {% endfor %}\n\t</div>\n  </div>\n  </div>\n</div>\n\n<div class=\"container\">\n<div class=\"row\" >\n  <div class=\"col-sm\" style=\"display: flex; justify-content: flex-end; margin-top: 15px;\">\n    <div style='margin-right: 50px;'> <b>Order Total:</b></div>\n\t<div> <b>${{ order.total }}</b> </div>\n  </div></div></div>\n",
+                      "hideDesktop": false,
+                      "displayCondition": null,
+                      "containerPadding": "10px",
+                      "anchor": "",
+                      "_meta": {
+                          "htmlID": "u_content_html_3",
+                          "htmlClassNames": "u_content_html"
+                      },
+                      "selectable": true,
+                      "draggable": true,
+                      "duplicatable": true,
+                      "deletable": true,
+                      "hideable": true
+                  }
+              }, {
+                  "id": "m2srNDm8He",
+                  "type": "text",
+                  "values": {
+                      "containerPadding": "10px",
+                      "anchor": "",
+                      "fontSize": "14px",
+                      "textAlign": "left",
+                      "lineHeight": "140%",
+                      "linkStyle": {
+                          "inherit": true,
+                          "linkColor": "#0000ee",
+                          "linkHoverColor": "#0000ee",
+                          "linkUnderline": true,
+                          "linkHoverUnderline": true
+                      },
+                      "hideDesktop": false,
+                      "displayCondition": null,
+                      "_meta": {
+                          "htmlID": "u_content_text_4",
+                          "htmlClassNames": "u_content_text"
+                      },
+                      "selectable": true,
+                      "draggable": true,
+                      "duplicatable": true,
+                      "deletable": true,
+                      "hideable": true,
+                      "text": "<p style=\"line-height: 140%;\">Thank you for your business.</p>\n<p style=\"line-height: 140%;\">Nextbrand Team</p>"
                   }
               }, {
                   "id": "Nnvizoywqb",
                   "type": "html",
                   "values": {
                       "html": "<div style=\"text-align: center;\">\n  <a href=\"#\" style=\"text-decoration: none;\">Terms</a> | \n  <a href=\"#\" style=\"text-decoration: none;\">Privacy</a> | \n  <a href=\"#\" style=\"text-decoration: none;\">Unsubscribe</a>\n</div>\n",
+                      "hideDesktop": false,
                       "displayCondition": null,
                       "containerPadding": "10px",
                       "anchor": "",
@@ -224,13 +287,6 @@
               }
           },
           "backgroundColor": "#e7e7e7",
-          "backgroundImage": {
-              "url": "",
-              "fullWidth": true,
-              "repeat": "no-repeat",
-              "size": "custom",
-              "position": "center"
-          },
           "preheaderText": "",
           "linkStyle": {
               "body": true,
@@ -238,6 +294,13 @@
               "linkHoverColor": "#0000ee",
               "linkUnderline": true,
               "linkHoverUnderline": true
+          },
+          "backgroundImage": {
+              "url": "",
+              "fullWidth": true,
+              "repeat": "no-repeat",
+              "size": "custom",
+              "position": "center"
           },
           "_meta": {
               "htmlID": "u_body",

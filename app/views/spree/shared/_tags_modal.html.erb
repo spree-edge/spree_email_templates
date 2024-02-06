@@ -1,0 +1,49 @@
+<div class="float-right mb-3 mr-3">
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"> Show Tags </button>
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="exampleModalLabel"><b>Tags</b></h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <% tag_headers = { 'order' => 'Order:', 'store' => 'Store:', 'user' => 'User:', 'shipment' => 'Shipments:',
+                          'reimbursement' => 'Reimbursement:', 'lineitem' => 'LineItems:',
+                          'exchangeitem' => 'ExchangeItems:'}
+        shown_tags = {}
+      %>
+
+      <% tag_hash = {} %>
+      <% key = nil %>
+      <% @tags.each do |tag| %>
+        <% tag_type = tag.split(/[._]/).first %>
+        <% unless shown_tags[tag_type] %>
+          <% shown_tags[tag_type] = true %>
+          <% key = tag_headers[tag_type] %>
+          <% tag_hash[key] ||= [] %>
+        <% end %>
+        <% tag_hash[key] << tag if key %>
+      <% end %>
+
+      <% tag_hash.each do |key, value| %>
+        <h4 class='ml-1 mt-1 mb-0'><b><%= key %></b></h4>
+        <div style='display: flex; flex-wrap: wrap;'>
+          <% value.each_with_index do |tag, index| %>
+            <span class="ml-1 mb-0">
+              <span style="text-transform: none;">
+                {{<%= tag %>}}
+                <% if index < value.length - 1 %>,<% end %>
+              </span>
+            </span>
+          <% end %>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>

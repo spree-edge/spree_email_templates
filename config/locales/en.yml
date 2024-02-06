@@ -22,3 +22,5 @@ en:
       email_template_active: Active
       emai_template_action: Action
       save_content_button: Save Content
+      test_mail_sent: Test Mail Sent successfully.
+      active_template: Please activate Template.

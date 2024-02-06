@@ -2,9 +2,13 @@
   <button type="button" class="btn btn-success" onclick="saveContent()"><%= Spree.t(:save_content_button, scope: :template) %></button>
 </div>
 
+<%= render partial: 'spree/shared/tags_modal', locals: { tags: @tags } %>
+
+<%= render partial: 'spree/shared/test_email_modal', locals: { template: @template } %>
+
 <script src="https://editor.unlayer.com/embed.js"></script>
 
-<div id="editor-container" style="height: 90vh;"></div>
+<div id="editor-container" style="height: 74vh;"></div>
 
 <script>
   var design = <%= raw @template.content_json.to_json %>;
