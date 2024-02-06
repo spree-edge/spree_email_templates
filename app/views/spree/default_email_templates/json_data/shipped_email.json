@@ -74,7 +74,7 @@
                       "duplicatable": true,
                       "deletable": true,
                       "hideable": true,
-                      "text": "<p style=\"line-height: 140%;\"><strong>Dear </strong>{{ user_first_name }} {{ user_last_name }},</p>"
+                      "text": "<p style=\"line-height: 140%;\"><strong>Dear </strong>{{ user.first_name }} {{ user.last_name }},</p>"
                   }
               }, {
                   "id": "_bXbC62ufr",
@@ -103,13 +103,13 @@
                       "duplicatable": true,
                       "deletable": true,
                       "hideable": true,
-                      "text": "<div>\n<div>\n<div>\n<div>Your order has been shipped with the email {{user_email}} having order number {{order_number}}</div>\n</div>\n</div>\n<div> </div>\n</div>\n<div>\n<div><strong>Order Summary:</strong></div>\n</div>"
+                      "text": "<div>\n<div>\n<div>\n<div>Your order has been shipped with the email {{user.email}} having order number {{order.number}}</div>\n</div>\n</div>\n<div> </div>\n</div>\n<div>\n<div><strong>Order Summary:</strong></div>\n</div>"
                   }
               }, {
                   "id": "YhPPNPHruR",
                   "type": "html",
                   "values": {
-                      "html": "<hr>\n<div class=\"container\">\n<div class=\"row\" >\n{% for lineitem in line_items %}\n  <div class=\"col-sm\" style=\"display: flex; justify-content: space-between; margin-top: 15px;\">\n  <div><b>{{ lineitem.name }}</b></div>\n  <div>{{ lineitem.quantity }} × {{ lineitem.single_money }}</div>\n</div>\n  <br>\n<div class=\"col-sm\" style=\"display: flex; justify-content: space-between; margin-top: -16px;\">\n  <div style=\"font-size: 12px;\">({{ lineitem.options_text }})</div>\n  <div>{{ lineitem.display_amount }}</div>\n</div>\n  {% endfor %}\n</div>\n</div>\n<hr>\n\n<div class=\"container\">\n<div class=\"row\" >\n  <div class=\"col-sm\" style=\"display: flex; justify-content: flex-end; margin-top: 15px;\">\n<div style='margin-right: 50px;'> <b>Subtotal:</b> </div>\n  <div><b>${{ order_item_total }}</b></div>\n</div>\n</div>\n</div>\n\n<div class=\"container\">\n<div class=\"row\" >\n  <div class=\"col-sm\" style=\"display: flex; justify-content: flex-end; margin-top: 15px;\">\n    <div style='margin-right: 90px;'> <b>Shipping:</b></div> </div>\n    <div class=\"col-sm\" style=\"display: flex; justify-content: flex-end; margin-top: 15px;\">\n      <div style='margin-right: 50px; margin-top: -10px;'>\n\t\t\n    {{ shipping_method_name }}\n\t</div>\n\t\t<div style='margin-top: -10px;'><b>\n          ${{ shipment_cost }} </b>\n\t</div>\n  </div>\n  </div>\n</div>\n\n<div class=\"container\">\n<div class=\"row\" >\n  <div class=\"col-sm\" style=\"display: flex; justify-content: flex-end; margin-top: 15px;\">\n    <div style='margin-right: 50px;'> <b>Order Total:</b></div>\n\t<div> <b>${{ order_total }}</b> </div>\n  </div></div></div>\n",
+                      "html": "<hr>\n<div class=\"container\">\n<div class=\"row\" >\n{% for lineitem in line_items %}\n  <div class=\"col-sm\" style=\"display: flex; justify-content: space-between; margin-top: 15px;\">\n  <div><b>{{ lineitem.name }}</b></div>\n  <div>{{ lineitem.quantity }} × {{ lineitem.single_money }}</div>\n</div>\n  <br>\n<div class=\"col-sm\" style=\"display: flex; justify-content: space-between; margin-top: -16px;\">\n  <div style=\"font-size: 12px;\">({{ lineitem.options_text }})</div>\n  <div>{{ lineitem.display_amount }}</div>\n</div>\n  {% endfor %}\n</div>\n</div>\n<hr>\n\n<div class=\"container\">\n<div class=\"row\" >\n  <div class=\"col-sm\" style=\"display: flex; justify-content: flex-end; margin-top: 15px;\">\n<div style='margin-right: 50px;'> <b>Subtotal:</b> </div>\n  <div><b>${{ order.item_total }}</b></div>\n</div>\n</div>\n</div>\n\n<div class=\"container\">\n<div class=\"row\" >\n  <div class=\"col-sm\" style=\"display: flex; justify-content: flex-end; margin-top: 15px;\">\n    <div style='margin-right: 90px;'> <b>Shipping:</b></div> </div>\n    <div class=\"col-sm\" style=\"display: flex; justify-content: flex-end; margin-top: 15px;\">\n      <div style='margin-right: 50px; margin-top: -10px;'>\n\t\t\n    {{ shipment.shipping_method_name }}\n\t</div>\n\t\t<div style='margin-top: -10px;'><b>\n          ${{ shipment.cost }} </b>\n\t</div>\n  </div>\n  </div>\n</div>\n\n<div class=\"container\">\n<div class=\"row\" >\n  <div class=\"col-sm\" style=\"display: flex; justify-content: flex-end; margin-top: 15px;\">\n    <div style='margin-right: 50px;'> <b>Order Total:</b></div>\n\t<div> <b>${{ order.total }}</b> </div>\n  </div></div></div>\n",
                       "hideDesktop": false,
                       "displayCondition": null,
                       "containerPadding": "10px",

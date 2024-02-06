@@ -169,7 +169,7 @@
                                 <div>
                                   <div>
                                     <div>
-                                      <div>New order has been placed with the email {{user_email}} having order number {{order_number}},</div>
+                                      <div>New order has been placed with the email {{user.email}} having order number {{order.number}},</div>
                                     </div>
                                   </div>
                                   <div>&nbsp;</div>
@@ -212,7 +212,7 @@
                                   <div class="row">
                                     <div class="col-sm" style="display: flex; justify-content: flex-end; margin-top: 15px;">
                                       <div style="margin-right: 50px;"> <b>Subtotal:</b> </div>
-                                      <div><b>${{ order_item_total }}</b></div>
+                                      <div><b>${{ order.item_total }}</b></div>
                                     </div>
                                   </div>
                                 </div>
@@ -239,7 +239,7 @@
                                   <div class="row">
                                     <div class="col-sm" style="display: flex; justify-content: flex-end; margin-top: 15px;">
                                       <div style="margin-right: 50px;"> <b>Order Total:</b></div>
-                                      <div> <b>${{ order_total }}</b> </div>
+                                      <div> <b>${{ order.total }}</b> </div>
                                     </div>
                                   </div>
                                 </div>

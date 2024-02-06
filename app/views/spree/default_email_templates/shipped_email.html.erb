@@ -152,7 +152,7 @@
                             <td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;" align="left">
 
                               <div style="font-size: 14px; line-height: 140%; text-align: left; word-wrap: break-word;">
-                                <p style="line-height: 140%;"><strong>Dear </strong>{{ user_first_name }} {{ user_last_name }},</p>
+                                <p style="line-height: 140%;"><strong>Dear </strong>{{ user.first_name }} {{ user.last_name }},</p>
                               </div>
 
                             </td>
@@ -169,7 +169,7 @@
                                 <div>
                                   <div>
                                     <div>
-                                      <div>Your order has been shipped with the email {{user_email}} having order number {{order_number}}</div>
+                                      <div>Your order has been shipped with the email {{user.email}} having order number {{order.number}}</div>
                                     </div>
                                   </div>
                                   <div>&nbsp;</div>
@@ -212,7 +212,7 @@
                                   <div class="row">
                                     <div class="col-sm" style="display: flex; justify-content: flex-end; margin-top: 15px;">
                                       <div style="margin-right: 50px;"> <b>Subtotal:</b> </div>
-                                      <div><b>${{ order_item_total }}</b></div>
+                                      <div><b>${{ order.item_total }}</b></div>
                                     </div>
                                   </div>
                                 </div>
@@ -225,10 +225,10 @@
                                     <div class="col-sm" style="display: flex; justify-content: flex-end; margin-top: 15px;">
                                       <div style="margin-right: 50px; margin-top: -10px;">
 
-                                        {{ shipping_method_name }}
+                                        {{ shipment.shipping_method_name }}
                                       </div>
                                       <div style="margin-top: -10px;"><b>
-                                          ${{ shipment_cost }} </b>
+                                          ${{ shipment.cost }} </b>
                                       </div>
                                     </div>
                                   </div>
@@ -238,7 +238,7 @@
                                   <div class="row">
                                     <div class="col-sm" style="display: flex; justify-content: flex-end; margin-top: 15px;">
                                       <div style="margin-right: 50px;"> <b>Order Total:</b></div>
-                                      <div> <b>${{ order_total }}</b> </div>
+                                      <div> <b>${{ order.total }}</b> </div>
                                     </div>
                                   </div>
                                 </div>

@@ -27,13 +27,13 @@ class Template < ApplicationRecord
   def merge_parsed_attrubutes(*resources)
     resources.each_with_object({}) do |resource, merged_hash|
       output = parsed_attributes(resource) if resource
-      parse_data = resource.class.name == 'Spree::Shipment' ? output.merge(resource.custom_fields) : output
-      merged_hash.merge!(parse_data) if parse_data
+      resource.class.name == 'Spree::Shipment' ? output["shipment"].merge!(resource.custom_fields) : output
+      merged_hash.merge!(output) if output
     end
   end
 
   def parsed_attributes(resource)
-    resource&.attributes&.transform_keys { |key| "#{resource.class.name.demodulize.downcase}_#{key}" } || {}
+    { "#{resource.class.name.demodulize.downcase}" => resource&.attributes&.transform_keys { |key| "#{key}" } || {} }
   end
 
   def parsed_associate_attributes(order, reimbursement, shipment)
@@ -61,7 +61,7 @@ class Template < ApplicationRecord
       elsif object == 'exchange_items'
         tag = custom_tags(object)
       else
-        object.attribute_names.map { |name| "#{object.name.demodulize.downcase}_#{name}" }
+        object.attribute_names.map { |name| "#{object.name.demodulize.downcase}.#{name}" }
       end
     end
   end
