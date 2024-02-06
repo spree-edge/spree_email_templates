@@ -3,10 +3,11 @@ module Spree
 
     private
 
-    def build_template(resource, options = {})
+    def build_template(order, store, user, reimbursement = nil, shipment = nil)
+
       return unless template.present?
 
-      @body = template.render_body(resource, options)
+      @body = template.render_body(order, store, user, reimbursement, shipment)
     end
 
     def template

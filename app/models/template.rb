@@ -1,68 +1,112 @@
 class Template < ApplicationRecord
   require 'liquid'
+
+  gem_path = Gem::Specification.find_by_name('spree_email_templates').gem_dir
+  return_item = File.join(gem_path, 'app', 'models', 'spree', 'return_item.rb')
+  require return_item
+
   belongs_to :store, class_name: '::Spree::Store'
 
-  def render_body(resource, options)
-    @resource = resource
-    @options = options
+  def render_body(order, store, user, reimbursement, shipment)
     template = ::Liquid::Template.parse(content_html)
-    template_variables = send(name.to_s)
+    template_variables = merge_parsed_attrubutes(order, store, user, reimbursement, shipment)
+                                 .merge(parsed_associate_attributes(order, reimbursement, shipment))
     template.render(template_variables)
+  end
+
+  def send_mail(email, mailer_class)
+    mailer_class.constantize.send(name, record(mailer_class), email).deliver_now
+  end
+
+  def tags
+    keys(objects)
   end
 
   private
 
-  def confirm_email
-    order_vaiables
+  def merge_parsed_attrubutes(*resources)
+    resources.each_with_object({}) do |resource, merged_hash|
+      output = parsed_attributes(resource) if resource
+      parse_data = resource.class.name == 'Spree::Shipment' ? output.merge(resource.custom_fields) : output
+      merged_hash.merge!(parse_data) if parse_data
+    end
   end
 
-  def cancel_email
-    order_vaiables
+  def parsed_attributes(resource)
+    resource&.attributes&.transform_keys { |key| "#{resource.class.name.demodulize.downcase}_#{key}" } || {}
   end
 
-  def store_owner_notification_email
-    order_vaiables
+  def parsed_associate_attributes(order, reimbursement, shipment)
+    associated_attrubutes.each_with_object({}) do |tag, result|
+      if reimbursement
+        result['exchange_items'] = reimbursement.send(tag).exchange_requested.map do |associated_object|
+          variant = associated_object.variant
+          {'variant_name' => variant.name, 'variant_option_text' => variant.options_text}
+        end
+      else
+        object = shipment ? shipment : order
+        result[tag.to_s] = object.send(tag).map do |associated_object|
+          associated_object.attributes.merge(associated_object.custom_fields)
+        end
+      end
+    end
   end
 
-  def reimbursement_email
-    reimbursement_email_variables
+  def keys(objects)
+    objects.flat_map do |object|
+      if object == 'Spree::LineItem' || object == 'Spree::Shipment'
+        tag = custom_tags(object)
+        object = object.constantize
+        object.attribute_names.map { |name| "#{object.name.demodulize.downcase}.#{name}" } + tag
+      elsif object == 'exchange_items'
+        tag = custom_tags(object)
+      else
+        object.attribute_names.map { |name| "#{object.name.demodulize.downcase}_#{name}" }
+      end
+    end
   end
 
-  def shipped_email
-    shipment_variables
+  def custom_tags(object)
+    if object == 'Spree::LineItem'
+      ['lineitem.single_money', 'lineitem.display_amount',
+       'lineitem.options_text', 'lineitem.name']
+    elsif object == 'Spree::Shipment'
+      ['shipment.shipping_method_name']
+    elsif object == 'exchange_items'
+      ['exchangeitem.variant_name', 'exchangeitem.variant_option_text']
+    end
   end
 
-  def order_vaiables
-    { 'username' => @resource.name,
-      'user_email' => @resource.email,
-      'order_number' => @resource.number,
-      'order_total' => @resource.total,
-      'line_item_details' => @options[:line_item_details],
-      'tax' => @resource.additional_tax_total,
-      'subtotal' => @resource.item_total,
-      'store_name' => @resource.store.name,
-      'line_items_table' => @options[:line_items_table] }
+  def objects
+    case name
+    when 'confirm_email', 'cancel_email', 'store_owner_notification_email'
+      [Spree::Order, Spree::Store, Spree::User, 'Spree::LineItem', 'Spree::Shipment']
+    when 'shipped_email'
+      [Spree::Order, Spree::Store, Spree::User, Spree::Shipment, 'Spree::LineItem']
+    when 'reimbursement_email'
+      [Spree::Order, Spree::Store, Spree::User, Spree::Reimbursement, 'exchange_items']
+    end
   end
 
-  def shipment_variables
-    { 'username' => @resource.order.name,
-      'user_email' => @resource.order.email,
-      'order_number' => @resource.order.number,
-      'shipping_method_name' => @resource.shipping_method.name,
-      'store_name' => @resource.store.name,
-      'track_information' => @resource.tracking,
-      'order_total' => @resource.order.total,
-      'line_item_details' => @options[:line_item_details],
-      'tax' => @resource.order.additional_tax_total,
-      'subtotal' => @resource.order.item_total,
-      'line_items_table' => @options[:line_items_table] }
+  def associated_attrubutes
+    case name
+    when 'confirm_email', 'cancel_email', 'store_owner_notification_email'
+      [:line_items, :shipments]
+    when 'shipped_email'
+      [:line_items]
+    when 'reimbursement_email'
+      [:return_items]
+    end
   end
 
-  def reimbursement_email_variables
-    { 'username' => @resource.order.name,
-      'user_email' => @resource.order.email,
-      'order_number' => @resource.order.number,
-      'store_name' => @resource.order.store.name,
-      'reimbursement_item_details' => @options[:reimbursement_item_details] }
+  def record(mailer_class)
+    case mailer_class
+    when 'Spree::OrderMailer'
+      Spree::Order.last
+    when 'Spree::ShipmentMailer'
+      Spree::Shipment.last
+    when 'Spree::ReimbursementMailer'
+      Spree::Reimbursement.last
+    end
   end
 end

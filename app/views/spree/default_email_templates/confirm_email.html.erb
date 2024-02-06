@@ -166,7 +166,7 @@
                             <td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;" align="left">
 
                               <div style="font-size: 14px; line-height: 140%; text-align: left; word-wrap: break-word;">
-                                <p style="line-height: 140%;"><strong>Hi </strong>{{ username }},</p>
+                                <p style="line-height: 140%;"><strong>Dear </strong>{{ user_first_name }} {{ user_last_name }},</p>
                               </div>
 
                             </td>
@@ -180,23 +180,89 @@
                             <td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;" align="left">
 
                               <div style="font-size: 14px; line-height: 140%; text-align: left; word-wrap: break-word;">
-                                <p style="line-height: 140%;">Your order has been placed with the email {{ user_email }} having order number {{ order_number }} of a total amount ${{ order_total }},<br><br></p>
-                                <p style="line-height: 140%;">with the following items<br><br></p>
+                                <p style="line-height: 140%;">Your order has been placed with the email {{ order_email }} having order number {{ order_number }} <br><br><strong>Order Summary:</strong></p>
+                              </div>
+
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+
+                      <table style="font-family:arial,helvetica,sans-serif;" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+                        <tbody>
+                          <tr>
+                            <td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;" align="left">
+
+                              <div>
+                                <hr>
                                 <div>
-                                  <div>{{ line_item_details }}<br><br>
-                                    <div>
-                                      <div>The tax amount for the order is ${{ tax }}<br>
-                                        <div>
-                                          <div>The subtotal cost of line items is&nbsp; ${{ subtotal }} is received by the store&nbsp; {{ store_name }}.</div>
-                                        </div>
-                                        <br>
-                                        <div>
-                                          <div>Thanks</div>
-                                        </div>
+                                  <div class="row">
+                                    {% for lineitem in line_items %}
+                                    <div class="col-sm" style="display: flex; justify-content: space-between; margin-top: 15px;">
+                                      <div><b>{{ lineitem.name }}</b></div>
+                                      <div>{{ lineitem.quantity }} × {{ lineitem.single_money }}</div>
+                                    </div>
+                                    <br>
+                                    <div class="col-sm" style="display: flex; justify-content: space-between; margin-top: -16px;">
+                                      <div style="font-size: 12px;">({{ lineitem.options_text }})</div>
+                                      <div>{{ lineitem.display_amount }}</div>
+                                    </div>
+                                    {% endfor %}
+                                  </div>
+                                </div>
+                                <hr>
+
+                                <div>
+                                  <div class="row">
+                                    <div class="col-sm" style="display: flex; justify-content: flex-end; margin-top: 15px;">
+                                      <div style="margin-right: 50px;"> <b>Subtotal:</b> </div>
+                                      <div><b>${{ order_item_total }}</b></div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div>
+                                  <div class="row">
+                                    <div class="col-sm" style="display: flex; justify-content: flex-end; margin-top: 15px;">
+                                      <div style="margin-right: 90px;"> <b>Shipping:</b></div>
+                                    </div>
+                                    <div class="col-sm" style="display: flex; justify-content: flex-end; margin-top: 15px;">
+                                      <div style="margin-right: 50px; margin-top: -10px;">
+                                        {% for shipment in shipments %}
+                                        {{ shipment.shipping_method_name }}
+                                      </div>
+                                      <div style="margin-top: -10px;"><b>
+                                          ${{ shipment.cost }} </b>
+                                        {% endfor %}
                                       </div>
                                     </div>
                                   </div>
                                 </div>
+
+                                <div>
+                                  <div class="row">
+                                    <div class="col-sm" style="display: flex; justify-content: flex-end; margin-top: 15px;">
+                                      <div style="margin-right: 50px;"> <b>Order Total:</b></div>
+                                      <div> <b>${{ order_total }}</b> </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                              </div>
+
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+
+                      <table style="font-family:arial,helvetica,sans-serif;" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+                        <tbody>
+                          <tr>
+                            <td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;" align="left">
+
+                              <div style="font-size: 14px; line-height: 140%; text-align: left; word-wrap: break-word;">
+                                <p style="line-height: 140%;">Thank you for your business.</p>
+                                <p style="line-height: 140%;">Nextbrand Team</p>
                               </div>
 
                             </td>
