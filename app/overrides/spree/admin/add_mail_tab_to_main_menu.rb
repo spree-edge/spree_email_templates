@@ -4,8 +4,8 @@ Deface::Override.new(
   insert_after: 'ul#sidebarApps',
   text: <<-HTML
     <% if can? :admin, Template %>
-      <ul class="nav nav-sidebar border-bottom" id="sidebarEmail">
-        <%= tab 'Email Templates', url: admin_templates_path, icon: "envelope.svg" %>
+      <ul class="nav nav-sidebar" id="sidebarEmail">
+      <%= tab Spree.t(:email_templates, scope: :template), url: admin_templates_path, icon: "envelope.svg" %>
       </ul>
     <% end %>
   HTML
