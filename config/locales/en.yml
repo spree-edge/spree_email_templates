@@ -24,3 +24,15 @@ en:
       save_content_button: Save Content
       test_mail_sent: Test Mail Sent successfully.
       active_template: Please activate Template.
+      duplicate: Duplicate
+      clone_button: Clone
+      template_cloned: Template cloned successfully.
+      clone_failed: Failed to clone template.
+      language: Language
+      design: Design
+      json: JSON
+      html: HTML
+      plain_text: Plain Text
+      tags: Tags
+      text_copied: Tag Copied
+      test_email: Test Email

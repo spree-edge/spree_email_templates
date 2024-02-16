@@ -1,7 +1,7 @@
 module Spree
   module Admin
     class TemplatesController < Spree::Admin::BaseController
-      before_action :find_template, only: [:edit, :update, :test_email]
+      before_action :find_template, only: [:edit, :update, :test_email, :clone]
 
       def index
         @templates = current_store.templates
@@ -40,6 +40,17 @@ module Spree
         end
       end
 
+      def clone
+        @cloned_template = @template.dup
+        if @cloned_template.save
+          redirect_to admin_templates_path
+          flash[:success] = Spree.t(:template_cloned, scope: :template)
+        else
+          redirect_to admin_templates_path
+          flash[:alert] = Spree.t(:clone_failed, scope: :template)
+        end
+      end
+
       private
 
       def find_template
@@ -63,7 +74,7 @@ module Spree
       end
 
       def permitted_params
-        params.permit(:content_html, :active, :id, :email).merge(content_json: @content_json)
+        params.permit(:content_html, :active, :id, :email, :locale).merge(content_json: @content_json)
       end
     end
   end

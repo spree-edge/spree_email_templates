@@ -5,13 +5,16 @@ module Spree
 
     def build_template(order, store, user, reimbursement = nil, shipment = nil)
 
-      return unless template.present?
+      return unless template(user).present?
 
-      @body = template.render_body(order, store, user, reimbursement, shipment)
+      @body = template(user).render_body(order, store, user, reimbursement, shipment)
     end
 
-    def template
-      current_store.templates.find_by(name: action_name)
+    def template(user)
+      locale = user.selected_locale || current_store.default_locale
+
+      current_store.templates.find_by(name: action_name, locale: locale) ||
+      current_store.templates.find_by(name: action_name, locale: 'en')
     end
 
   end
