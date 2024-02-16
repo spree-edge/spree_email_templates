@@ -30,6 +30,7 @@ Gem::Specification.new do |s|
   # s.add_dependency 'spree_backend' # uncomment to include Admin Panel changes
   s.add_dependency 'spree_extension'
   s.add_dependency 'liquid', '>= 5.4.0'
+  s.add_dependency 'codemirror-rails'
 
   s.add_development_dependency 'spree_dev_tools'
 end

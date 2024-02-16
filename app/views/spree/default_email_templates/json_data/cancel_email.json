@@ -153,25 +153,6 @@
                       "hideable": true,
                       "text": "<p style=\"line-height: 140%;\">Thank you for your business.<br />Nextbrand Team</p>"
                   }
-              }, {
-                  "id": "cLrLyxd9QH",
-                  "type": "html",
-                  "values": {
-                      "html": "<div style=\"text-align: center;\">\n  <a href=\"#\" style=\"text-decoration: none;\">Terms</a> | \n  <a href=\"#\" style=\"text-decoration: none;\">Privacy</a> | \n  <a href=\"#\" style=\"text-decoration: none;\">Unsubscribe</a>\n</div>\n",
-                      "hideDesktop": false,
-                      "displayCondition": null,
-                      "containerPadding": "10px",
-                      "anchor": "",
-                      "_meta": {
-                          "htmlID": "u_content_html_2",
-                          "htmlClassNames": "u_content_html"
-                      },
-                      "selectable": true,
-                      "draggable": true,
-                      "duplicatable": true,
-                      "deletable": true,
-                      "hideable": true
-                  }
               }],
               "values": {
                   "_meta": {

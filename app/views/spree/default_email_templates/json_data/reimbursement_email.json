@@ -76,25 +76,6 @@
                       "hideable": true,
                       "text": "<p style=\"line-height: 140%;\"><strong>Dear </strong>{{ user.first_name }} {{ user.last_name }},</p>\n<p style=\"line-height: 140%;\"> </p>\n<div>\n<div>\n<div>Your return authorization has been approved for {{user.email}} having order number {{order.number}}</div>\n<div> </div>\n<div><strong>Refund Summary:</strong></div>\n</div>\n</div>\n<div>\n<div> </div>\n<div>Total refunded: ${{ reimbursement.total }}</div>\n<div> </div>\n<div><strong>Exchange Summary:</strong></div>\n<div> </div>\n<div>{% for exchangeitem in exchange_items %}</div>\n<div>       <strong>{{ exchangeitem.variant_name }}</strong></div>\n<div>      <sup> ({{ exchangeitem.variant_option_text }})</sup></div>\n<div>{% endfor %}</div>\n<div> </div>\n<div> </div>\n<div>Thank you for your business.<br />Nextbrand Team</div>\n</div>\n<div>\n<div> </div>\n<div> </div>\n</div>"
                   }
-              }, {
-                  "id": "XJerJ6e770",
-                  "type": "html",
-                  "values": {
-                      "html": "<div style=\"text-align: center;\">\n  <a href=\"#\" style=\"text-decoration: none;\">Terms</a> | \n  <a href=\"#\" style=\"text-decoration: none;\">Privacy</a> | \n  <a href=\"#\" style=\"text-decoration: none;\">Unsubscribe</a>\n</div>\n",
-                      "hideDesktop": false,
-                      "displayCondition": null,
-                      "containerPadding": "10px",
-                      "anchor": "",
-                      "_meta": {
-                          "htmlID": "u_content_html_1",
-                          "htmlClassNames": "u_content_html"
-                      },
-                      "selectable": true,
-                      "draggable": true,
-                      "duplicatable": true,
-                      "deletable": true,
-                      "hideable": true
-                  }
               }],
               "values": {
                   "_meta": {
