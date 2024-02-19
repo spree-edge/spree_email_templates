@@ -15,7 +15,7 @@ class Template < ApplicationRecord
   end
 
   def send_mail(email, mailer_class)
-    mailer_class.constantize.send(name, record(mailer_class), email).deliver_now
+    mailer_class.constantize.send(name, record(mailer_class), email, id).deliver_now
   end
 
   def tags
