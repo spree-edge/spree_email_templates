@@ -7,8 +7,8 @@
     <table class="table" id="pagesTable">
       <thead class="text-muted">
         <th scope="col"><%= Spree.t(:email_template_name, scope: :template) %></th>
-        <th scope="col"><%= Spree.t(:email_template_active, scope: :template) %></th>
         <th scope="col"><%= Spree.t(:language, scope: :template) %></th>
+        <th scope="col"><%= Spree.t(:email_template_active, scope: :template) %></th>
         <th scope="col"><%= Spree.t(:emai_template_action, scope: :template) %></th>
       </thead>
       <tbody>
@@ -18,13 +18,13 @@
               <%= template.internal_name %>
             </td>
             <td>
+              <%= locale_full_name(template.locale) %>
+            </td>
+            <td>
               <div class="custom-control custom-switch">
                 <input type="checkbox" class="custom-control-input" id="activeSwitch<%= template.id %>" <%= template.active ? 'checked' : '' %> onclick="updateActiveStatus(<%= template.id %>)">
                 <label class="custom-control-label" for="activeSwitch<%= template.id %>"></label>
               </div>
-            </td>
-            <td>
-              <%= locale_full_name(template.locale) %>
             </td>
             <td class="actions" data-hook="admin_pages_index_row_actions">
               <span class="d-flex">

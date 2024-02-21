@@ -12,7 +12,8 @@ module Spree
       end
 
       def edit
-        @tags = @template.tags
+        tags = @template.tags
+        @tags_with_description = tags.map { |tag| [tag, Spree.t(tag)] }.to_h
       end
 
       def update

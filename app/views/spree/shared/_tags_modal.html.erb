@@ -1,13 +1,20 @@
 <div class='container-fluid'>
   <table class="table">
+    <thead>
+        <th scope="col"><h5 class='ml-2'><%= Spree.t(:tags, scope: :template) %></h5></th>
+        <th scope="col"><h5><%= Spree.t(:description, scope: :template) %></h5></th>
+      </thead>
     <tbody>
-      <% @tags.each do |tag| %>
+      <% @tags_with_description.each do |tag, description| %>
         <tr>
           <td class='py-1'>
             <button class='btn tooltip-button py-0 px-0 ml-2' style="text-transform: none; cursor: pointer;" onclick="myFunction(this)">
               {{<%= tag %>}}
             </button>
             <div class="tooltip ml-5"><%= Spree.t(:text_copied, scope: :template) %></div>
+          </td>
+          <td>
+            <%= description %>
           </td>
         </tr>
       <% end %>

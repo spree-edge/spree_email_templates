@@ -4,6 +4,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.3/mode/xml/xml.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.3/mode/htmlmixed/htmlmixed.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.3/mode/plain/plain.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.3/addon/display/autorefresh.min.js"></script>
 
 
 <div class="float-right mb-3">
@@ -113,13 +114,15 @@
     var jsonEditor = CodeMirror(document.getElementById('jsonEditor'), {
       lineNumbers: true,
       mode: 'application/json',
-      value: JSON.stringify(design, null, 2)
+      value: JSON.stringify(design, null, 2),
+      autoRefresh: true
     });
 
     var htmlEditor = CodeMirror(document.getElementById('htmlEditor'), {
       lineNumbers: true,
       mode: 'htmlmixed',
-      value: content_html
+      value: content_html,
+      autoRefresh: true
     });
 
     var tmp = document.createElement("DIV");
@@ -128,12 +131,27 @@
       style.remove();
     });
 
+    function removeExtraWhitespace(text) {
+      var lines = text.split('\n');
+
+      var cleanedText = lines.length > 0 ? lines[0] + '\n' : '';
+
+      for (var i = 1; i < lines.length; i++) {
+          if (lines[i].trim() !== '') {
+              cleanedText += '\n' + lines[i].trim();
+          }
+      }
+      return cleanedText;
+    }
+
     var textContent = tmp.textContent.trim();
-    textContent = textContent.replace(/[^\S\n]+/g, ' ');
+
+    textContent = removeExtraWhitespace(textContent);
     var textEditor = CodeMirror(document.getElementById('textEditor'), {
       lineNumbers: true,
       mode: 'text/plain',
-      value: textContent
+      value: textContent,
+      autoRefresh: true
     });
   });
 </script>
