@@ -28,14 +28,11 @@
             </td>
             <td class="actions" data-hook="admin_pages_index_row_actions">
               <span class="d-flex">
-                <%= link_to edit_admin_template_path(template), class: 'btn', data: { turbo: false }, title: Spree.t(:edit_button, scope: :template) do %>
-                  <%= image_tag 'edit.svg', class: 'icon' %>
-                <% end %>
+                <%= link_to_with_icon('edit.svg', Spree.t(:edit), edit_admin_template_path(template), class: 'btn btn-sm btn-light', data: { turbo: false }, title: Spree.t(:edit_button, scope: :template), no_text: :true) %>
+          
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-                <%= link_to clone_admin_template_path(template.id), class: 'btn mt-1', data: { method: 'post', turbo: false }, title: Spree.t(:clone_button, scope: :template) do %>
-                  <i class="fa fa-clone"></i>
-                <% end %>
-              </span>
+                <%= link_to_with_icon('clone.svg', Spree.t(:clone), clone_admin_template_path(template.id), class: 'btn btn-sm btn-light', data: { turbo: false, method: 'post' }, title: Spree.t(:clone_button, scope: :template), no_text: :true) %>              
+              </span> 
             </td>
           </tr>
         <% end %>
