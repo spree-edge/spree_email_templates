@@ -14,7 +14,7 @@ module Spree
       if id.present?
         current_store.templates.find(id)
       else
-        locale = user.selected_locale || current_store.default_locale
+        locale = current_store.default_locale || user.selected_locale
 
         current_store.templates.find_by(name: action_name, locale: locale) ||
         current_store.templates.find_by(name: action_name, locale: 'en')
