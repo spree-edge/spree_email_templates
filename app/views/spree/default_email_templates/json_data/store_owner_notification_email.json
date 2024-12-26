@@ -151,7 +151,7 @@
                       "duplicatable": true,
                       "deletable": true,
                       "hideable": true,
-                      "text": "<p style=\"line-height: 140%;\">Thank you for your business.<br />Nextbrand Team</p>"
+                      "text": "<p style=\"line-height: 140%;\">Thank you for your business.<br />{{ store.name }}</p>"
                   }
               }],
               "values": {

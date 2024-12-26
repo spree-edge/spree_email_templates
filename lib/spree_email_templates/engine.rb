@@ -9,9 +9,9 @@ module SpreeEmailTemplates
       g.test_framework :rspec
     end
 
-    initializer 'spree_email_templates.environment', before: :load_config_initializers do |_app|
-      SpreeEmailTemplates::Config = SpreeEmailTemplates::Configuration.new
-    end
+    config.after_initialize do
+        SpreeEmailTemplates::Config = SpreeEmailTemplates::Configuration.new
+      end
 
     def self.activate
       Dir.glob(File.join(File.dirname(__FILE__), '../../app/**/*_decorator*.rb')) do |c|

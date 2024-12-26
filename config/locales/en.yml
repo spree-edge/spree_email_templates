@@ -3,6 +3,7 @@
 
 en:
   spree:
+    email_templates: Email Templates
     template:
       not_found: Templates not found
       updated: Template Updated Successfully
@@ -52,18 +53,6 @@ en:
       taxable_adjustment_total: Total amount of taxable adjustments applied to the order.
       non_taxable_adjustment_total: Total amount of non-taxable adjustments applied to the order.
       internal_note: Internal notes or comments related to the order.
-    store:
-      name: Name of the store.
-      url: URL of the store's website.
-      facebook: Facebook page of the store.
-      twitter: Twitter handle of the store.
-      instagram: Instagram page of the store.
-      customer_support_email: Email address for customer support inquiries.
-      description: Description of the store.
-      address: Address of the store.
-      contact_phone: Contact phone number for the store.
-      settings: Settings related to the store's operations.
-      linkedin: LinkedIn page of the store.
     user:
       email: Email address of the user placing the order.
       first_name: First name of the user.
