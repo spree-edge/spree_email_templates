@@ -1,9 +1,9 @@
 class Template < ApplicationRecord
   require 'liquid'
 
-  gem_path = Gem::Specification.find_by_name('spree_email_templates').gem_dir
-  return_item = File.join(gem_path, 'app', 'models', 'spree', 'return_item.rb')
-  require return_item
+  # gem_path = Gem::Specification.find_by_name('spree_email_templates').gem_dir
+  # return_item = File.join(gem_path, 'app', 'models', 'spree', 'return_item.rb')
+  # require return_item
 
   belongs_to :store, class_name: '::Spree::Store'
 

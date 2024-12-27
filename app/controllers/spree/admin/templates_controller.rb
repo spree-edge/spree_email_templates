@@ -4,9 +4,14 @@ module Spree
       before_action :find_template, only: [:edit, :update, :test_email, :clone]
 
       def index
+        unless current_store.unlayer_project_id.present?
+          redirect_to edit_admin_store_email_templates_url(store_id: current_store.id)
+          flash[:error] = Spree.t(:unlayer_project_missing)
+        end
+      
         @templates = current_store.templates
-
-        unless @templates
+      
+        unless @templates.any?
           flash[:alert] = Spree.t(:not_found, scope: :template)
         end
       end

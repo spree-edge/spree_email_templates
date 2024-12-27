@@ -80,7 +80,7 @@
 <script>
   var design = <%= raw @template.content_json.to_json %>;
   var content_html = `<%= j @template.content_html.to_s.html_safe %>`;
-  var project_id = <%= Rails.application.credentials.dig(:unlayer, :project_id) %>;
+  var project_id = <%= current_store.unlayer_project_id %>;
 
   const editor = unlayer.createEditor({
     id: 'editor-container',

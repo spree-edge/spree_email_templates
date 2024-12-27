@@ -4,6 +4,10 @@
 en:
   spree:
     email_templates: Email Templates
+    unlayer_project_id_updated: Unlayer Project Id Updated Successfully
+    unlayer_project_id_failed: Error Updating Unlayer Project Id
+    enter_unlayer_project_id: Enter Unlayer Project Id
+    unlayer_project_missing: Unlayer Project Id Missing
     template:
       not_found: Templates not found
       updated: Template Updated Successfully
