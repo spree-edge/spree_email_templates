@@ -1,0 +1,17 @@
+<% content_for :page_title do %>
+  <%= Spree.t(:store) %>
+  <%= render partial: 'spree/admin/stores/tabs', locals: {current: :email_templates} %>
+<% end %> 
+
+<%= form_with model: @store, url: admin_store_email_templates_path(@store), method: :patch, local: true do |f| %>
+  <div class="row">
+    <div class="field col col-lg-4 col-md-6 col-sm-12">
+      <%= f.label :unlayer_project_id, Spree.t(:unlayer_project_id), class: "form-label" %>
+      <%= f.text_field :unlayer_project_id, class: "form-control", placeholder: Spree.t(:enter_unlayer_project_id) %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= button Spree.t('actions.update'), 'save.svg', 'submit', class: 'btn-primary' %>
+  </div>
+<% end %> 

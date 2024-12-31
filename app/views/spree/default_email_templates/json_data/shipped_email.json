@@ -1,0 +1,251 @@
+{
+  "counters": {
+      "u_row": 1,
+      "u_column": 1,
+      "u_content_html": 2,
+      "u_content_text": 3,
+      "u_content_image": 1
+  },
+  "body": {
+      "id": "yMO2AbuNyD",
+      "rows": [{
+          "id": "3oreIyWQn_",
+          "cells": [1],
+          "columns": [{
+              "id": "F7ftK_RnHx",
+              "contents": [{
+                  "id": "zorPzLgYOJ",
+                  "type": "image",
+                  "values": {
+                      "containerPadding": "17px",
+                      "anchor": "",
+                      "src": {
+                          "url": "https://nextbrand.online/assets/nb-logo-main-9ff0dbbc8fb1668a71c18481b7d7df833d85afbceb2d1d4b1cabae2112752bd1.svg",
+                          "width": 310,
+                          "height": 38,
+                          "maxWidth": "100%",
+                          "autoWidth": false
+                      },
+                      "textAlign": "center",
+                      "altText": "",
+                      "action": {
+                          "name": "web",
+                          "values": {
+                              "href": "",
+                              "target": "_blank"
+                          }
+                      },
+                      "hideDesktop": false,
+                      "displayCondition": null,
+                      "_meta": {
+                          "htmlID": "u_content_image_1",
+                          "htmlClassNames": "u_content_image"
+                      },
+                      "selectable": true,
+                      "draggable": true,
+                      "duplicatable": true,
+                      "deletable": true,
+                      "hideable": true
+                  }
+              }, {
+                  "id": "Um-5lKUG5E",
+                  "type": "text",
+                  "values": {
+                      "containerPadding": "10px",
+                      "anchor": "",
+                      "fontSize": "14px",
+                      "textAlign": "left",
+                      "lineHeight": "140%",
+                      "linkStyle": {
+                          "inherit": true,
+                          "linkColor": "#0000ee",
+                          "linkHoverColor": "#0000ee",
+                          "linkUnderline": true,
+                          "linkHoverUnderline": true
+                      },
+                      "hideDesktop": false,
+                      "displayCondition": null,
+                      "_meta": {
+                          "htmlID": "u_content_text_1",
+                          "htmlClassNames": "u_content_text"
+                      },
+                      "selectable": true,
+                      "draggable": true,
+                      "duplicatable": true,
+                      "deletable": true,
+                      "hideable": true,
+                      "text": "<p style=\"line-height: 140%;\"><strong>Dear </strong>{{ user.first_name }} {{ user.last_name }},</p>"
+                  }
+              }, {
+                  "id": "_bXbC62ufr",
+                  "type": "text",
+                  "values": {
+                      "containerPadding": "10px",
+                      "anchor": "",
+                      "fontSize": "14px",
+                      "textAlign": "left",
+                      "lineHeight": "140%",
+                      "linkStyle": {
+                          "inherit": true,
+                          "linkColor": "#0000ee",
+                          "linkHoverColor": "#0000ee",
+                          "linkUnderline": true,
+                          "linkHoverUnderline": true
+                      },
+                      "hideDesktop": false,
+                      "displayCondition": null,
+                      "_meta": {
+                          "htmlID": "u_content_text_2",
+                          "htmlClassNames": "u_content_text"
+                      },
+                      "selectable": true,
+                      "draggable": true,
+                      "duplicatable": true,
+                      "deletable": true,
+                      "hideable": true,
+                      "text": "<div>\n<div>\n<div>\n<div>Your order has been shipped with the email {{user.email}} having order number {{order.number}}</div>\n</div>\n</div>\n<div> </div>\n</div>\n<div>\n<div><strong>Order Summary:</strong></div>\n</div>"
+                  }
+              }, {
+                  "id": "YhPPNPHruR",
+                  "type": "html",
+                  "values": {
+                      "html": "<hr>\n<div class=\"container\">\n<div class=\"row\" >\n{% for lineitem in line_items %}\n  <div class=\"col-sm\" style=\"display: flex; justify-content: space-between; margin-top: 15px;\">\n  <div><b>{{ lineitem.name }}</b></div>\n  <div>{{ lineitem.quantity }} × {{ lineitem.single_money }}</div>\n</div>\n  <br>\n<div class=\"col-sm\" style=\"display: flex; justify-content: space-between; margin-top: -16px;\">\n  <div style=\"font-size: 12px;\">({{ lineitem.options_text }})</div>\n  <div>{{ lineitem.display_amount }}</div>\n</div>\n  {% endfor %}\n</div>\n</div>\n<hr>\n\n<div class=\"container\">\n<div class=\"row\" >\n  <div class=\"col-sm\" style=\"display: flex; justify-content: flex-end; margin-top: 15px;\">\n<div style='margin-right: 50px;'> <b>Subtotal:</b> </div>\n  <div><b>${{ order.item_total }}</b></div>\n</div>\n</div>\n</div>\n\n<div class=\"container\">\n<div class=\"row\" >\n  <div class=\"col-sm\" style=\"display: flex; justify-content: flex-end; margin-top: 15px;\">\n    <div style='margin-right: 90px;'> <b>Shipping:</b></div> </div>\n    <div class=\"col-sm\" style=\"display: flex; justify-content: flex-end; margin-top: 15px;\">\n      <div style='margin-right: 50px; margin-top: -10px;'>\n\t\t\n    {{ shipment.shipping_method_name }}\n\t</div>\n\t\t<div style='margin-top: -10px;'><b>\n          ${{ shipment.cost }} </b>\n\t</div>\n  </div>\n  </div>\n</div>\n\n<div class=\"container\">\n<div class=\"row\" >\n  <div class=\"col-sm\" style=\"display: flex; justify-content: flex-end; margin-top: 15px;\">\n    <div style='margin-right: 50px;'> <b>Order Total:</b></div>\n\t<div> <b>${{ order.total }}</b> </div>\n  </div></div></div>\n",
+                      "hideDesktop": false,
+                      "displayCondition": null,
+                      "containerPadding": "10px",
+                      "anchor": "",
+                      "_meta": {
+                          "htmlID": "u_content_html_1",
+                          "htmlClassNames": "u_content_html"
+                      },
+                      "selectable": true,
+                      "draggable": true,
+                      "duplicatable": true,
+                      "deletable": true,
+                      "hideable": true
+                  }
+              }, {
+                  "id": "6qPOmnE7pQ",
+                  "type": "text",
+                  "values": {
+                      "containerPadding": "10px",
+                      "anchor": "",
+                      "fontSize": "14px",
+                      "textAlign": "left",
+                      "lineHeight": "140%",
+                      "linkStyle": {
+                          "inherit": true,
+                          "linkColor": "#0000ee",
+                          "linkHoverColor": "#0000ee",
+                          "linkUnderline": true,
+                          "linkHoverUnderline": true
+                      },
+                      "hideDesktop": false,
+                      "displayCondition": null,
+                      "_meta": {
+                          "htmlID": "u_content_text_3",
+                          "htmlClassNames": "u_content_text"
+                      },
+                      "selectable": true,
+                      "draggable": true,
+                      "duplicatable": true,
+                      "deletable": true,
+                      "hideable": true,
+                      "text": "<p style=\"line-height: 140%;\">Thank you for your business.</p>\n<p style=\"line-height: 140%;\">{{ store.name }}</p>"
+                  }
+              }],
+              "values": {
+                  "_meta": {
+                      "htmlID": "u_column_1",
+                      "htmlClassNames": "u_column"
+                  },
+                  "border": {},
+                  "padding": "0px",
+                  "backgroundColor": ""
+              }
+          }],
+          "values": {
+              "displayCondition": null,
+              "columns": false,
+              "backgroundColor": "",
+              "columnsBackgroundColor": "",
+              "backgroundImage": {
+                  "url": "",
+                  "fullWidth": true,
+                  "repeat": "no-repeat",
+                  "size": "custom",
+                  "position": "center"
+              },
+              "padding": "0px",
+              "anchor": "",
+              "hideDesktop": false,
+              "_meta": {
+                  "htmlID": "u_row_1",
+                  "htmlClassNames": "u_row"
+              },
+              "selectable": true,
+              "draggable": true,
+              "duplicatable": true,
+              "deletable": true,
+              "hideable": true
+          }
+      }],
+      "headers": [],
+      "footers": [],
+      "values": {
+          "popupPosition": "center",
+          "popupWidth": "600px",
+          "popupHeight": "auto",
+          "borderRadius": "10px",
+          "contentAlign": "center",
+          "contentVerticalAlign": "center",
+          "contentWidth": "500px",
+          "fontFamily": {
+              "label": "Arial",
+              "value": "arial,helvetica,sans-serif"
+          },
+          "textColor": "#000000",
+          "popupBackgroundColor": "#FFFFFF",
+          "popupBackgroundImage": {
+              "url": "",
+              "fullWidth": true,
+              "repeat": "no-repeat",
+              "size": "cover",
+              "position": "center"
+          },
+          "popupOverlay_backgroundColor": "rgba(0, 0, 0, 0.1)",
+          "popupCloseButton_position": "top-right",
+          "popupCloseButton_backgroundColor": "#DDDDDD",
+          "popupCloseButton_iconColor": "#000000",
+          "popupCloseButton_borderRadius": "0px",
+          "popupCloseButton_margin": "0px",
+          "popupCloseButton_action": {
+              "name": "close_popup",
+              "attrs": {
+                  "onClick": "document.querySelector('.u-popup-container').style.display = 'none';"
+              }
+          },
+          "backgroundColor": "#e7e7e7",
+          "preheaderText": "",
+          "linkStyle": {
+              "body": true,
+              "linkColor": "#0000ee",
+              "linkHoverColor": "#0000ee",
+              "linkUnderline": true,
+              "linkHoverUnderline": true
+          },
+          "backgroundImage": {
+              "url": "",
+              "fullWidth": true,
+              "repeat": "no-repeat",
+              "size": "custom",
+              "position": "center"
+          },
+          "_meta": {
+              "htmlID": "u_body",
+              "htmlClassNames": "u_body"
+          }
+      }
+  },
+  "schemaVersion": 16
+}

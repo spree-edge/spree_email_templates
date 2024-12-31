@@ -1,0 +1,65 @@
+<div class="px-3 px-md-0">
+  <div>
+    <h2 class='mb-4'><%= Spree.t(:email_templates, scope: :template) %></h2>
+  </div>
+
+  <% if @templates.any? %>
+    <div class="table-responsive border rounded bg-white">
+      <table class="table" id="pagesTable">
+        <thead class="text-muted">
+          <th scope="col"><%= Spree.t(:email_template_name, scope: :template) %></th>
+          <th scope="col"><%= Spree.t(:language, scope: :template) %></th>
+          <th scope="col"><%= Spree.t(:email_template_active, scope: :template) %></th>
+          <th scope="col"><%= Spree.t(:emai_template_action, scope: :template) %></th>
+        </thead>
+        <tbody>
+          <% @templates.each do |template| %>
+            <tr>
+              <td>
+                <%= template.internal_name %>
+              </td>
+              <td>
+                <%= locale_full_name(template.locale) %>
+              </td>
+              <td>
+                <div class="custom-control custom-switch">
+                  <input type="checkbox" class="custom-control-input" id="activeSwitch<%= template.id %>" <%= template.active ? 'checked' : '' %> onclick="updateActiveStatus(<%= template.id %>)">
+                  <label class="custom-control-label" for="activeSwitch<%= template.id %>"></label>
+                </div>
+              </td>
+              <td class="actions" data-hook="admin_pages_index_row_actions">
+                <span class="d-flex">
+                  <%= link_to_with_icon('edit.svg', Spree.t(:edit), edit_admin_template_path(template), class: 'btn btn-sm btn-light', data: { turbo: false }, title: Spree.t(:edit_button, scope: :template), no_text: :true) %>
+            
+                  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+                  <%= link_to_with_icon('clone.svg', Spree.t(:clone), clone_admin_template_path(template.id), class: 'btn btn-sm btn-light', data: { turbo: false, method: 'post' }, title: Spree.t(:clone_button, scope: :template), no_text: :true) %>              
+                </span> 
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
+</div>
+
+
+<script>
+  function updateActiveStatus(template_id) {
+    var id = template_id
+    var active = document.getElementById("activeSwitch" + id).checked;
+
+    $.ajax({
+      url: "/admin/templates/" + id,
+      method: 'PATCH',
+      data: { active: active},
+      success: function(response) {
+        console.log('Content saved successfully:', response);
+        location.reload(true);
+      },
+      error: function(error) {
+        console.error('Error saving content:', error);
+      }
+    })
+  }
+</script>

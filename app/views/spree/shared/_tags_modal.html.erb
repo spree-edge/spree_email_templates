@@ -1,0 +1,64 @@
+<div class='container-fluid'>
+  <table class="table">
+    <thead>
+        <th scope="col"><h5 class='ml-2'><%= Spree.t(:tags, scope: :template) %></h5></th>
+        <th scope="col"><h5><%= Spree.t(:description, scope: :template) %></h5></th>
+      </thead>
+    <tbody>
+      <% @tags_with_description.each do |tag, description| %>
+        <tr>
+          <td class='py-1'>
+            <button class='btn tooltip-button py-0 px-0 ml-2' style="text-transform: none; cursor: pointer;" onclick="myFunction(this)">
+              {{<%= tag %>}}
+            </button>
+            <div class="tooltip ml-5"><%= Spree.t(:text_copied, scope: :template) %></div>
+          </td>
+          <td>
+            <%= description %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const buttons = document.querySelectorAll('.tooltip-button');
+  const tooltips = document.querySelectorAll('.tooltip');
+
+  buttons.forEach((button, index) => {
+    button.addEventListener('click', function() {
+      const copyText = button.textContent.trim();
+      const tempInput = document.createElement("textarea");
+      tempInput.value = copyText;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      document.execCommand("copy");
+      document.body.removeChild(tempInput);
+
+      tooltips[index].classList.add('show');
+      setTimeout(() => {
+        tooltips[index].classList.remove('show');
+      }, 1000);
+    });
+  });
+});
+</script>
+
+<style>
+.tooltip {
+  visibility: hidden;
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 5px;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip.show {
+  visibility: visible;
+}
+</style>

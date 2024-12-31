@@ -2,4 +2,90 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  spree:
+    email_templates: Email Templates
+    unlayer_project_id_updated: Unlayer Project Id Updated Successfully
+    unlayer_project_id_failed: Error Updating Unlayer Project Id
+    enter_unlayer_project_id: Enter Unlayer Project Id
+    unlayer_project_missing: Unlayer Project Id Missing
+    template:
+      not_found: Templates not found
+      updated: Template Updated Successfully
+      owner_email: Store Owner Notification Email
+      owner_email_name: store_owner_notification_email
+      order_confirm_email: Order Confirmation Email
+      order_confirm_email_name: confirm_email
+      shipment_email: Shipment Email
+      shipment_email_name: shipped_email
+      cancelation_email: Order Cancelation Email
+      cancelation_email_name: cancel_email
+      reimbursment_email: Order Reimbursement Email
+      reimbursment_email_name: reimbursement_email
+      email_templates: Email Templates
+      edit_button: Edit
+      email_template_name: Name
+      email_template_active: Active
+      emai_template_action: Action
+      save_content_button: Save Content
+      test_mail_sent: Test Mail Sent successfully.
+      active_template: Please activate Template.
+      duplicate: Duplicate
+      clone_button: Clone
+      template_cloned: Template cloned successfully.
+      clone_failed: Failed to clone template.
+      language: Language
+      design: Design
+      json: JSON
+      html: HTML
+      plain_text: Plain Text
+      tags: Tags
+      text_copied: Tag Copied
+      test_email: Test Email
+      description: Description
+    order:
+      number: Unique identifier for the order.
+      item_total: Total cost of all items in the order.
+      total: Total cost of the order including adjustments, taxes, and shipping.
+      adjustment_total: Total amount of adjustments applied to the order.
+      payment_total: Total amount paid for the order.
+      email: Email address associated with the order.
+      special_instructions: Any special instructions provided by the customer for the order.
+      currency: Currency used for the order.
+      shipment_total: Total cost of shipping for the order.
+      additional_tax_total: Total additional tax amount applied to the order.
+      promo_total: Total amount of promotional discounts applied to the order.
+      taxable_adjustment_total: Total amount of taxable adjustments applied to the order.
+      non_taxable_adjustment_total: Total amount of non-taxable adjustments applied to the order.
+      internal_note: Internal notes or comments related to the order.
+    user:
+      email: Email address of the user placing the order.
+      first_name: First name of the user.
+      last_name: Last name of the user.
+    reimbursement:
+      number: Unique identifier for a reimbursement.
+      total: Total amount of the reimbursement.
+    exchangeitem:
+      variant_name: Name of the variant for an exchange item.
+      variant_option_text: Text describing the variant options for an exchange item.
+    lineitem:
+      quantity: The quantity of a particular item in an order line item.
+      price: The price of a single unit of the item in the order line item.
+      currency: The currency used for the price of the item in the order line item.
+      adjustment_total: The total amount of adjustments applied to the order line item.
+      promo_total: The total amount of promotional discounts applied to the order line item.
+      taxable_adjustment_total: The total amount of taxable adjustments applied to the order line item.
+      non_taxable_adjustment_total: The total amount of non-taxable adjustments applied to the order line item.
+      single_money: The amount of money represented by a single unit of the item in the order line item.
+      display_amount: The amount of money displayed for the order line item.
+      options_text: Text describing any options chosen for the item in the order line item.
+      name: The name or description of the item in the order line item.
+    shipment:
+      tracking: The tracking number associated with a shipment.
+      number: The unique identifier for a shipment.
+      cost: The cost of shipping for the shipment.
+      adjustment_total: The total amount of adjustments applied to the shipment.
+      promo_total: The total amount of promotional discounts applied to the shipment.
+      taxable_adjustment_total: The total amount of taxable adjustments applied to the shipment.
+      non_taxable_adjustment_total: The total amount of non-taxable adjustments applied to the shipment.
+      tracking_label: The label or carrier associated with the tracking information for the shipment.
+      shipping_method_name: The name of the shipping method chosen for the shipment.

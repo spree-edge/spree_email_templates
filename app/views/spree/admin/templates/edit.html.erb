@@ -1,0 +1,184 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.3/codemirror.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.3/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.3/mode/javascript/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.3/mode/xml/xml.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.3/mode/htmlmixed/htmlmixed.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.3/mode/plain/plain.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.3/addon/display/autorefresh.min.js"></script>
+
+
+<div class="float-right mb-3">
+  <button type="button" class="btn btn-success" onclick="saveContent()"><%= Spree.t(:save_content_button, scope: :template) %></button>
+</div>
+
+<%= render partial: 'spree/shared/test_email_modal', locals: { template: @template } %>
+
+<div class="d-flex align-items-end mb-4">
+  <h3 class="mb-0 mr-4"><%= @template.internal_name %></h3>
+  <%= form_for [:admin, @template] do |f| %>
+  <div>
+    <%= f.select :locale, options_from_collection_for_select(supported_locales_options, :last, :first,
+     @template.locale || I18n.locale), { }, { class: 'select2 form-control', id: 'locale-select' } %>
+    <%= f.error_message_on :locale %>
+  </div>
+<% end %>
+</div>
+
+<ul class="nav email-pills nav-pills mb-3" id="pills-tab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <a class="nav-link active" id="pills-design-tab" data-toggle="pill" data-target="#pills-design" role="tab" aria-controls="pills-design" aria-selected="true">
+      <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="paintbrush" class="svg-inline--fa fa-paintbrush mr-[6px]" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" height="15"><path fill="currentColor" d="M278 219.5L356.5 298 524.7 73.6c4.8-6.4 4.1-15.3-1.5-20.9s-14.5-6.3-20.9-1.5L278 219.5zM199.1 321.6c-4.9-1-9.9-1.6-15.1-1.6c-39.8 0-72 32.2-72 72c0 3.8 .3 7.5 .8 11.1c3.3 21.4-2.2 43.1-13.8 60l-.7 .9H184c39.8 0 72-32.2 72-72c0-5.2-.5-10.2-1.6-15.1l-55.4-55.4zM384 341.3c-19.1 25.5-48.6 41.1-80.3 42.6c.2 2.7 .3 5.4 .3 8.1c0 66.3-53.7 120-120 120H32c-17.7 0-32-14.3-32-32s14.3-32 32-32h6c18.1 0 30.1-19.8 27.4-37.6c-.9-6-1.4-12.1-1.4-18.4c0-66.3 53.7-120 120-120c2.7 0 5.4 .1 8.1 .3c1.5-31.7 17-61.1 42.5-80.3L473.5 12.8C499-6.3 534.6-3.8 557.2 18.7s25.1 58.2 6 83.7L384 341.3z"></path></svg>
+      <%= Spree.t(:design, scope: :template) %></a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" id="pills-json-tab" data-toggle="pill" data-target="#pills-json" role="tab" aria-controls="pills-json" aria-selected="false">
+      <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="code" class="svg-inline--fa fa-code mr-[6px]" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" height="15"><path fill="currentColor" d="M399.1 1.1c-12.7-3.9-26.1 3.1-30 15.8l-144 464c-3.9 12.7 3.1 26.1 15.8 30s26.1-3.1 30-15.8l144-464c3.9-12.7-3.1-26.1-15.8-30zm71.4 118.5c-9.1 9.7-8.6 24.9 1.1 33.9L580.9 256 471.6 358.5c-9.7 9.1-10.2 24.3-1.1 33.9s24.3 10.2 33.9 1.1l128-120c4.8-4.5 7.6-10.9 7.6-17.5s-2.7-13-7.6-17.5l-128-120c-9.7-9.1-24.9-8.6-33.9 1.1zm-301 0c-9.1-9.7-24.3-10.2-33.9-1.1l-128 120C2.7 243 0 249.4 0 256s2.7 13 7.6 17.5l128 120c9.7 9.1 24.9 8.6 33.9-1.1s8.6-24.9-1.1-33.9L59.1 256 168.4 153.5c9.7-9.1 10.2-24.3 1.1-33.9z"></path></svg>
+      <%= Spree.t(:json, scope: :template) %></a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" id="pills-html-tab" data-toggle="pill" data-target="#pills-html" role="tab" aria-controls="pills-html" aria-selected="false">
+      <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="html5" class="svg-inline--fa fa-html5 mr-[6px]" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" height="15"><path fill="currentColor" d="M0 32l34.9 395.8L191.5 480l157.6-52.2L384 32H0zm308.2 127.9H124.4l4.1 49.4h175.6l-13.6 148.4-97.9 27v.3h-1.1l-98.7-27.3-6-75.8h47.7L138 320l53.5 14.5 53.7-14.5 6-62.2H84.3L71.5 112.2h241.1l-4.4 47.7z"></path></svg>
+      <%= Spree.t(:html, scope: :template) %></a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" id="pills-text-tab" data-toggle="pill" data-target="#pills-text" role="tab" aria-controls="pills-text" aria-selected="false">
+      <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="text" class="svg-inline--fa fa-text mr-[6px]" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" height="15"><path fill="currentColor" d="M48 80v48c0 13.3-10.7 24-24 24s-24-10.7-24-24V72C0 49.9 17.9 32 40 32H408c22.1 0 40 17.9 40 40v56c0 13.3-10.7 24-24 24s-24-10.7-24-24V80H248l0 352h48c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24h48l0-352H48z"></path></svg>
+      <%= Spree.t(:plain_text, scope: :template) %></a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" id="pills-tag-tab" data-toggle="pill" data-target="#pills-tag" role="tab" aria-controls="pills-tag" aria-selected="false">
+      <%= Spree.t(:tags, scope: :template) %></a>
+  </li>
+</ul>
+
+<div class="tab-content" id="pills-tabContent">
+  <div class="tab-pane fade show active" id="pills-design" role="tabpanel" aria-labelledby="pills-design-tab">
+    <script src="https://editor.unlayer.com/embed.js"></script>
+    <div id="editor-container" style="height: 73vh;"></div>
+  </div>
+
+  <div class="tab-pane fade" id="pills-json" role="tabpanel" aria-labelledby="pills-json-tab">
+    <div class="editor-container">
+      <div id="jsonEditor" class="editor ml-4"></div>
+    </div>
+  </div>
+  <div class="tab-pane fade" id="pills-html" role="tabpanel" aria-labelledby="pills-html-tab">
+    <div class="editor-container">
+      <div id="htmlEditor" class="editor"></div>
+    </div>
+  </div>
+  <div class="tab-pane fade" id="pills-text" role="tabpanel" aria-labelledby="pills-text-tab">
+    <div class="editor-container">
+      <div id="textEditor" class="editor"></div>
+    </div>
+  </div>
+  <div class="tab-pane fade" id="pills-tag" role="tabpanel" aria-labelledby="pills-tag-tab">
+    <%= render partial: 'spree/shared/tags_modal', locals: { tags: @tags } %>
+  </div>
+</div>
+
+<script>
+  var design = <%= raw @template.content_json.to_json %>;
+  var content_html = `<%= j @template.content_html.to_s.html_safe %>`;
+  var project_id = <%= current_store.unlayer_project_id %>;
+
+  const editor = unlayer.createEditor({
+    id: 'editor-container',
+    displayMode: 'email',
+    projectId: project_id,
+  });
+
+  editor.loadDesign(design);
+
+  function saveContent() {
+    var selectedLocale = $('#locale-select').val();
+    editor.exportHtml(function(data) {
+      var json = JSON.stringify(data.design);
+      var html = data.html;
+
+      $.ajax({
+        url: "/admin/templates/" + <%= @template.id %>,
+        method: 'PATCH',
+        data: { content_json: json, content_html: html, locale: selectedLocale },
+        success: function(response) {
+          console.log('Content saved successfully:', response);
+          location.reload(true);
+        },
+        error: function(error) {
+          console.error('Error saving content:', error);
+        }
+      });
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+
+    var jsonEditor = CodeMirror(document.getElementById('jsonEditor'), {
+      lineNumbers: true,
+      mode: 'application/json',
+      value: JSON.stringify(design, null, 2),
+      autoRefresh: true
+    });
+
+    var htmlEditor = CodeMirror(document.getElementById('htmlEditor'), {
+      lineNumbers: true,
+      mode: 'htmlmixed',
+      value: content_html,
+      autoRefresh: true
+    });
+
+    var tmp = document.createElement("DIV");
+    tmp.innerHTML = content_html;
+    tmp.querySelectorAll('style').forEach(style => {
+      style.remove();
+    });
+
+    function removeExtraWhitespace(text) {
+      var lines = text.split('\n');
+
+      var cleanedText = lines.length > 0 ? lines[0] + '\n' : '';
+
+      for (var i = 1; i < lines.length; i++) {
+          if (lines[i].trim() !== '') {
+              cleanedText += '\n' + lines[i].trim();
+          }
+      }
+      return cleanedText;
+    }
+
+    var textContent = tmp.textContent.trim();
+
+    textContent = removeExtraWhitespace(textContent);
+    var textEditor = CodeMirror(document.getElementById('textEditor'), {
+      lineNumbers: true,
+      mode: 'text/plain',
+      value: textContent,
+      autoRefresh: true
+    });
+  });
+</script>
+
+<style>
+  .email-pills.nav-pills .nav-link {
+    cursor: pointer;
+  }
+
+  .email-pills {
+    gap: 36px;
+  }
+
+  .email-pills.nav-pills .nav-link.active {
+    background-color: transparent !important;
+    text-decoration-line: underline;
+    text-underline-offset: 10px;
+    text-decoration-thickness: 2px;
+    color: blue !important;
+  }
+
+  .CodeMirror pre.CodeMirror-line {
+    padding-left: 40px;
+  }
+  .CodeMirror{
+    height: 73vh;
+  }
+</style>
